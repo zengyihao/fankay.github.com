@@ -136,4 +136,8 @@ background: #ff0000;
 color: white;
 background: #83BF73;
 }
-
+em{
+	color: #999;
+	border:1px solid #CCC;
+	padding:2px;
+}

@@ -7,8 +7,84 @@
     <title>樊凯</title>
     <link href="http://fankai.me/feed/" rel="self" />
     <link href="http://yihui.name/" />
-    <lastBuildDate>2012-04-18T11:16:30+08:00</lastBuildDate>
+    <lastBuildDate>2012-04-18T15:06:04+08:00</lastBuildDate>
     <webMaster>fankai@kaishengit.com</webMaster>
+    
+    <item>
+      <title>Python学习笔记一</title>
+      <link href="http://fankai.me/2012/04/python-note-1/"/>
+      <pubDate>2012-04-18T12:24:00+08:00</pubDate>
+      <author>樊凯</author>
+      <guid>http://fankai.me/2012/04/python-note-1</guid>
+      <content:encoded><![CDATA[<h4 id='python'>Python的安装和基本使用:</h4>
+
+<ul>
+<li>MacOS和Liunx上自带Python</li>
+
+<li>Windows中需要自己去安装Python，在<a href='http://www.python.org'>Python</a>的官方网站上可以去下载适合自己操作系统的版本</li>
+
+<li>检测自己的系统中是否有Python环境</li>
+</ul>
+<div class='highlight'><pre><code class='python'><span class='n'>python</span> <span class='o'>-</span><span class='n'>V</span>
+</code></pre>
+</div>
+<ul>
+<li>Python安装后自带一个名称为IDLE的编辑器，在命令行中输入<em>python</em>即可进入IDLE环境，退出此环境时输入<em>quit()</em></li>
+</ul>
+
+<h4 id='python'>Python列表</h4>
+
+<p>python中的列表的概念有些类似与Java中的数组，写法为：</p>
+<div class='highlight'><pre><code class='python'><span class='n'>students</span> <span class='o'>=</span> <span class='p'>[</span><span class='s'>&quot;Jack&quot;</span><span class='p'>,</span><span class='s'>&quot;Tom&quot;</span><span class='p'>,</span><span class='s'>&quot;Jerry&quot;</span><span class='p'>,</span><span class='s'>&quot;Rose&quot;</span><span class='p'>]</span>
+</code></pre>
+</div>
+<p>注意：</p>
+
+<ol>
+<li>Python中的变量不用声明，可以直接使用 2. 列表中各项之间使用逗号分割</li>
+
+<li>通过下标(索引)来获取列表中的值，例如<em>student[1]</em></li>
+
+<li><em>print()</em>函数用于向控制台中打印内容，例如<em>print(student[0])</em></li>
+</ol>
+
+<h5 id='id90'>列表实例代码</h5>
+<div class='highlight'><pre><code class='python'><span class='n'>student</span> <span class='o'>=</span> <span class='p'>[</span><span class='s'>&quot;Jack&quot;</span><span class='p'>,</span><span class='s'>&quot;Tom&quot;</span><span class='p'>,</span><span class='s'>&quot;Jerry&quot;</span><span class='p'>,</span><span class='s'>&quot;Rose&quot;</span><span class='p'>]</span>
+<span class='k'>print</span><span class='p'>(</span><span class='nb'>len</span><span class='p'>(</span><span class='n'>student</span><span class='p'>))</span>
+<span class='k'>print</span><span class='p'>(</span><span class='n'>student</span>\<span class='p'>[</span><span class='mi'>1</span>\<span class='p'>])</span>
+<span class='n'>student</span><span class='o'>.</span><span class='n'>append</span><span class='p'>(</span><span class='s'>&quot;Alex&quot;</span><span class='p'>)</span>
+<span class='n'>studnet</span><span class='o'>.</span><span class='n'>pop</span><span class='p'>()</span>
+<span class='k'>print</span><span class='p'>(</span><span class='n'>student</span><span class='p'>)</span>
+<span class='n'>student</span><span class='o'>.</span><span class='n'>extend</span><span class='p'>([</span><span class='s'>&quot;zhangsan&quot;</span><span class='p'>,</span><span class='s'>&quot;lisi&quot;</span><span class='p'>])</span>
+<span class='n'>student</span><span class='o'>.</span><span class='n'>remove</span><span class='p'>(</span><span class='s'>&quot;Jack&quot;</span><span class='p'>)</span>
+<span class='n'>student</span><span class='o'>.</span><span class='n'>insert</span><span class='p'>(</span><span class='mi'>1</span><span class='p'>,</span><span class='s'>&quot;Hanks&quot;</span><span class='p'>)</span>
+</code></pre>
+</div>
+<p>代码解释：</p>
+
+<ol>
+<li>len()函数用于输出列表的长度</li>
+
+<li>append()函数用于在列表的末尾增加一个数据项</li>
+
+<li>pop()函数用于删除列表的最后一项</li>
+
+<li>extend()函数用于在列表的末尾添加一个数据项集合</li>
+
+<li>remove()函数用于删除列表中一个特定项，如果列表中有重复项，则只会删除第一个</li>
+
+<li>insert()函数用于在特定的位置前添加一个数据项</li>
+</ol>]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Head First Python</title>
+      <link href="http://fankai.me/2012/04/headfirstpython/"/>
+      <pubDate>2012-04-18T12:03:00+08:00</pubDate>
+      <author>樊凯</author>
+      <guid>http://fankai.me/2012/04/headfirstpython</guid>
+      <content:encoded><![CDATA[<p><img alt='Head First Python' src='http://ww4.sinaimg.cn/mw600/62772de6jw1ds3npjafjhj.jpg' /><br />买《光明与磊落》时，顺便买了刚出版的《Head First Python》，一直很喜欢Head First系列的书籍，希望一如既往的好，当然，最近我也会写些关于Python的学习心得。</p>]]></content:encoded>
+    </item>
     
     <item>
       <title>回归简约</title>
@@ -185,7 +261,7 @@
 <li><a href='http://book.douban.com/subject/4889838/'>鸟哥的Linux私房菜.基础学习篇（第三版）</a></li>
 </ul>
 
-<h3 id='id8'>其他</h3>
+<h3 id='id89'>其他</h3>
 
 <ul>
 <li><a href='http://book.douban.com/subject/4262627/'>重构</a></li>
@@ -204,11 +280,11 @@
       <pubDate>2012-03-31T20:22:00+08:00</pubDate>
       <author>樊凯</author>
       <guid>http://fankai.me/2012/03/dropboxpages</guid>
-      <content:encoded><![CDATA[<h3 id='id6'>简介</h3>
+      <content:encoded><![CDATA[<h3 id='id87'>简介</h3>
 
 <p>Dropbox是一个出色的文件存储和分享服务,可以帮你在电脑之间同步文件，把重要的文件备份到云端，甚至可以充当一个版本控制工具。Droppages是把Dropbox作为一个轻量级内容管理系统的工具。你只需在Dropbox里创建一个文件夹，然后分享给Droppages，这样很快你就能通过文本文件和文件夹搭起一个网站。你甚至还可以通过CSS和简单的模板设计自定义网站的界面。 Droppages非常适合搭建轻量级网站，速度非常快，无需FTP或登录信息。更牛的是它使用Dropbox对网站内容进行备份，如果你觉得网站出问题了，可以很快回滚到之前的版本。 此外，由于Dropbox已经整合到了数百个应用里面，所以你可以在这些应用里随时编辑你的网站。 <!-- more --></p>
 
-<h3 id='id7'>使用步骤</h3>
+<h3 id='id88'>使用步骤</h3>
 
 <ul>
 <li>点击此<a href='https://www.dropbox.com/referrals/NTUyNDE1Mzc3OQ?src=referrals_twitter9'>链接</a>注册一个dropbox账户，并且安装操作系统对应的Dropbox客户端。</li>
@@ -300,7 +376,7 @@
 </div>
 <p><strong>excludeMethods</strong>属性用来声明哪些方法不被拦截，<strong>includeMethod</strong>属性用来声明哪些方法被拦截，多个方法之间使用英文的逗号进行分割。</p>
 
-<h3 id='id1'>拦截器的配置</h3>
+<h3 id='id82'>拦截器的配置</h3>
 <div class='highlight'><pre><code class='xml'><span class='nt'>&lt;package</span> <span class='na'>name=</span><span class='s'>&quot;mystruts&quot;</span> <span class='na'>extends=</span><span class='s'>&quot;struts-default&quot;</span><span class='nt'>&gt;</span>
 	<span class='nt'>&lt;interceptors&gt;</span>
 		<span class='nt'>&lt;interceptor</span> <span class='na'>name=</span><span class='s'>&quot;loginInterceptor&quot;</span> <span class='na'>class=</span><span class='s'>&quot;com.kaishengit.web.interceptor.LoginInteceptor&quot;</span><span class='nt'>/&gt;</span>
@@ -309,7 +385,7 @@
 <span class='nt'>&lt;/package&gt;</span>
 </code></pre>
 </div>
-<h3 id='id2'>拦截器使用</h3>
+<h3 id='id83'>拦截器使用</h3>
 
 <ul>
 <li>在指定的Action中使用</li>
@@ -344,7 +420,7 @@
 <span class='nt'>&lt;/package&gt;</span>
 </code></pre>
 </div>
-<h3 id='id3'>拦截器实例</h3>
+<h3 id='id84'>拦截器实例</h3>
 
 <h5 id='timer'>自定义Timer拦截器</h5>
 <div class='highlight'><pre><code class='java'><span class='kd'>public</span> <span class='kd'>class</span> <span class='nc'>MyTimerInterceptor</span> <span class='kd'>extends</span> <span class='n'>AbstractInterceptor</span><span class='o'>{</span>
@@ -375,7 +451,7 @@
 <span class='o'>}</span>
 </code></pre>
 </div>
-<h6 id='id4'>登录验证拦截器</h6>
+<h6 id='id85'>登录验证拦截器</h6>
 <div class='highlight'><pre><code class='java'><span class='kd'>public</span> <span class='kd'>class</span> <span class='nc'>LoginInterceptor</span> <span class='kd'>extends</span> <span class='n'>AbstractInterceptor</span><span class='o'>{</span>
 
 	<span class='kd'>private</span> <span class='kd'>static</span> <span class='kd'>final</span> <span class='kt'>long</span> <span class='n'>serialVersionUID</span> <span class='o'>=</span> <span class='mi'>1L</span><span class='o'>;</span>
@@ -427,7 +503,7 @@
 <span class='nt'>&lt;/interceptors&gt;</span>
 </code></pre>
 </div>
-<h2 id='id5'>其他</h2>
+<h2 id='id86'>其他</h2>
 
 <ul>
 <li>获取拦截的Action的完全限定名</li>
