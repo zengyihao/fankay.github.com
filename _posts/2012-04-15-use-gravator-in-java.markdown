@@ -3,7 +3,7 @@ layout: post
 title: "在Java中使用Gravatar头像服务"
 date: 2012-04-15 11:07
 comments: true
-categories: Java,Web
+categories: JavaEE
 ---
 [Gravatar](http://en.gravatar.com/)是一个从事全球头像服务的网站，其实也就是根据你注册的电子邮件地址来绑定一个头像(当然需要你自己上传)。当你在一个支持Gravatar服务的网站上使用你的电子邮件地址作为注册的邮箱是，该网站就可以自动读取到你在Gravatar网站是设置的头像并显示。这样就保证了你一个头像，全网通用了。对于开发者来说也不需要开发头像上传服务了。只需要让用户在[Gravator](http://en.gravatar.com)上进行设置即可。
 
