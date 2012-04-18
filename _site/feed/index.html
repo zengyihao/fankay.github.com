@@ -6,17 +6,19 @@
   <channel>
     <title>樊凯</title>
     <link href="http://fankai.me/feed/" rel="self" />
-    <link href="http://yihui.name/" />
-    <lastBuildDate>2012-04-18T15:06:04+08:00</lastBuildDate>
+    <link href="http://fankai.me/" />
+    <lastBuildDate>2012-04-18T17:42:26+08:00</lastBuildDate>
     <webMaster>fankai@kaishengit.com</webMaster>
     
     <item>
-      <title>Python学习笔记一</title>
-      <link href="http://fankai.me/2012/04/python-note-1/"/>
-      <pubDate>2012-04-18T12:24:00+08:00</pubDate>
+      <title>Python学习笔记(一)</title>
+      <link href="http://fankai.me/2012/04/python-notes/"/>
+      <pubDate>2012-04-18T17:11:00+08:00</pubDate>
       <author>樊凯</author>
-      <guid>http://fankai.me/2012/04/python-note-1</guid>
-      <content:encoded><![CDATA[<h4 id='python'>Python的安装和基本使用:</h4>
+      <guid>http://fankai.me/2012/04/python-notes</guid>
+      <content:encoded><![CDATA[<p><img alt='Python' src='http://www.python.org/images/python-logo.gif' /></p>
+
+<h4 id='python'>Python的安装和基本使用:</h4>
 
 <ul>
 <li>MacOS和Liunx上自带Python</li>
@@ -48,7 +50,7 @@
 <li><em>print()</em>函数用于向控制台中打印内容，例如<em>print(student[0])</em></li>
 </ol>
 
-<h5 id='id90'>列表实例代码</h5>
+<h5 id='id331'>列表实例代码</h5>
 <div class='highlight'><pre><code class='python'><span class='n'>student</span> <span class='o'>=</span> <span class='p'>[</span><span class='s'>&quot;Jack&quot;</span><span class='p'>,</span><span class='s'>&quot;Tom&quot;</span><span class='p'>,</span><span class='s'>&quot;Jerry&quot;</span><span class='p'>,</span><span class='s'>&quot;Rose&quot;</span><span class='p'>]</span>
 <span class='k'>print</span><span class='p'>(</span><span class='nb'>len</span><span class='p'>(</span><span class='n'>student</span><span class='p'>))</span>
 <span class='k'>print</span><span class='p'>(</span><span class='n'>student</span>\<span class='p'>[</span><span class='mi'>1</span>\<span class='p'>])</span>
@@ -74,7 +76,101 @@
 <li>remove()函数用于删除列表中一个特定项，如果列表中有重复项，则只会删除第一个</li>
 
 <li>insert()函数用于在特定的位置前添加一个数据项</li>
-</ol>]]></content:encoded>
+</ol>
+
+<h5 id='id332'>利用循环迭代列表</h5>
+<div class='highlight'><pre><code class='python'><span class='k'>for</span> <span class='n'>stu</span> <span class='ow'>in</span> <span class='n'>student</span><span class='p'>:</span>
+	<span class='k'>print</span><span class='p'>(</span><span class='nb'>str</span><span class='p'>)</span>
+<span class='c'>#or</span>
+<span class='n'>index</span> <span class='o'>=</span> <span class='mi'>0</span>
+<span class='k'>while</span> <span class='n'>index</span> <span class='o'>&lt;</span> <span class='nb'>len</span><span class='p'>(</span><span class='n'>student</span><span class='p'>):</span>
+	<span class='k'>print</span><span class='p'>(</span><span class='n'>student</span><span class='p'>[</span><span class='n'>index</span><span class='p'>])</span>
+	<span class='n'>index</span> <span class='o'>=</span> <span class='n'>index</span> <span class='o'>+</span> <span class='mi'>1</span>
+</code></pre>
+</div>
+<p>注意：</p>
+
+<ol>
+<li>for和while后面的冒号不能省略</li>
+
+<li>Python的for、while、if、函数定义等都没有类似Java或C中大括号来定义这些代码块的边界，而是采用缩进的方式来定义代码的边界</li>
+
+<li>Python没有index++这种语法</li>
+</ol>
+
+<h5 id='id333'>列表中可以混合存放多种数据类型的数据</h5>
+
+<p>例如：</p>
+<div class='highlight'><pre><code class='python'><span class='n'>student</span> <span class='o'>=</span> <span class='p'>[</span><span class='s'>&quot;Tom&quot;</span><span class='p'>,</span><span class='mi'>23</span><span class='p'>,</span><span class='s'>&quot;Jerry&quot;</span><span class='p'>,</span><span class='mi'>22</span><span class='p'>,</span><span class='s'>&quot;Rose&quot;</span><span class='p'>,</span><span class='mi'>18</span><span class='p'>]</span>
+</code></pre>
+</div>
+<h5 id='python'>Python的列表中还可以包含其他的列表</h5>
+<div class='highlight'><pre><code class='python'><span class='n'>student</span> <span class='o'>=</span> <span class='p'>[</span><span class='s'>&quot;aa&quot;</span><span class='p'>,</span><span class='s'>&quot;bb&quot;</span><span class='p'>,</span><span class='s'>&quot;cc&quot;</span><span class='p'>,[</span><span class='s'>&quot;xxx&quot;</span><span class='p'>,</span><span class='s'>&quot;yyy&quot;</span><span class='p'>,</span><span class='s'>&quot;zzz&quot;</span><span class='p'>,[</span><span class='s'>&quot;heh&quot;</span><span class='p'>,</span><span class='s'>&quot;xixi&quot;</span><span class='p'>]]]</span>
+</code></pre>
+</div>
+<p>可以利用Python中的内置函数<em>isinstance(name,type)</em>来判断变量的类型，例如调用<em>isinstance(student,list)</em>返回值将为true，list代表就是列表类型。所以在迭代这个数组时，可以使用如下代码：</p>
+<div class='highlight'><pre><code class='python'><span class='k'>for</span> <span class='n'>item</span> <span class='ow'>in</span> <span class='n'>student</span> <span class='p'>:</span>
+	<span class='k'>if</span> <span class='nb'>isinstance</span><span class='p'>(</span><span class='n'>item</span><span class='p'>,</span><span class='nb'>list</span><span class='p'>)</span> <span class='p'>:</span>
+		<span class='k'>for</span> <span class='n'>item_sub</span> <span class='ow'>in</span> <span class='n'>item</span> <span class='p'>:</span>
+			<span class='k'>if</span> <span class='nb'>isinstance</span><span class='p'>(</span><span class='n'>item_sub</span><span class='p'>,</span><span class='nb'>list</span><span class='p'>)</span> <span class='p'>:</span>
+				<span class='k'>for</span> <span class='n'>item_sub_sub</span> <span class='ow'>in</span> <span class='n'>item_sub</span> <span class='p'>:</span>
+					<span class='k'>print</span><span class='p'>(</span><span class='n'>item_sub_sub</span><span class='p'>)</span>
+			<span class='k'>else</span> <span class='p'>:</span>
+				<span class='k'>print</span><span class='p'>(</span><span class='n'>item_sub</span><span class='p'>)</span>
+	<span class='k'>else</span> <span class='p'>:</span>
+		<span class='k'>print</span><span class='p'>(</span><span class='n'>item</span><span class='p'>)</span>
+</code></pre>
+</div>
+<p>看到上面代码基本处于崩溃状态，因为用<strong>递归</strong>可以很好的来解决这个问题，但是递归在使用时需要用到函数，那么就来看下Python中函数的定义：</p>
+<div class='highlight'><pre><code class='python'><span class='k'>def</span> <span class='nf'>show_list</span><span class='p'>(</span><span class='n'>mylist</span><span class='p'>)</span> <span class='p'>:</span>
+	<span class='k'>for</span> <span class='n'>item</span> <span class='ow'>in</span> <span class='n'>mylist</span> <span class='p'>:</span>
+		<span class='k'>if</span> <span class='nb'>isinstance</span><span class='p'>(</span><span class='n'>item</span><span class='p'>,</span><span class='nb'>list</span><span class='p'>)</span> <span class='p'>:</span>
+			<span class='n'>show_list</span><span class='p'>(</span><span class='n'>item</span><span class='p'>)</span>
+		<span class='k'>else</span> <span class='p'>:</span>
+			<span class='k'>print</span><span class='p'>(</span><span class='n'>item</span><span class='p'>)</span>
+</code></pre>
+</div>
+<p>其中<em>def</em>关键字用于定义函数，类似JavaScript中的<em>funciton</em>，show_list为函数名，小括号内是参数列表，该函数调用方法：</p>
+<div class='highlight'><pre><code class='python'><span class='n'>show_list</span><span class='p'>(</span><span class='n'>student</span><span class='p'>)</span>
+</code></pre>
+</div>
+<h5 id='id334'>注释</h5>
+
+<ol>
+<li>Python中多行注释可以以三个双引号(或三个单引号)开始，以三个双引号(单引号)结束</li>
+</ol>
+
+<p>2. 单行注释使用#开始，以行尾的结束而结束</p>
+
+<h5 id='python'>将Python代码写入到文件中</h5>
+
+<ul>
+<li>Python源代码文件后缀名为.py</li>
+
+<li>在命令行中使用命令<em>python xxx.py</em>来运行一个Python文件中的代码</li>
+
+<li>Python文件中如果需要使用中文，则需要在文件的第一行写：</li>
+</ul>
+<div class='highlight'><pre><code class='python'>\<span class='c'>#coding=UTF-8</span>
+</code></pre>
+</div>
+<p>Python文件示例：</p>
+<div class='highlight'><pre><code class='python'>\<span class='c'>#coding=UTF-8</span>
+<span class='n'>student</span> <span class='o'>=</span> <span class='p'>[</span><span class='s'>&quot;aa&quot;</span><span class='p'>,</span><span class='s'>&quot;bb&quot;</span><span class='p'>,</span><span class='s'>&quot;cc&quot;</span><span class='p'>,[</span><span class='s'>&quot;xxx&quot;</span><span class='p'>,</span><span class='s'>&quot;yyy&quot;</span><span class='p'>,</span><span class='s'>&quot;zzz&quot;</span><span class='p'>,[</span><span class='s'>&quot;heh&quot;</span><span class='p'>,</span><span class='s'>&quot;xixi&quot;</span><span class='p'>]]]</span>
+
+<span class='sd'>&#39;&#39;&#39;</span>
+<span class='sd'>这是一个注释</span>
+<span class='sd'>&#39;&#39;&#39;</span>
+<span class='k'>def</span> <span class='nf'>show_list</span><span class='p'>(</span><span class='n'>mylist</span><span class='p'>)</span> <span class='p'>:</span>
+	<span class='k'>for</span> <span class='n'>item</span> <span class='ow'>in</span> <span class='n'>mylist</span> <span class='p'>:</span>
+		<span class='k'>if</span> <span class='nb'>isinstance</span><span class='p'>(</span><span class='n'>item</span><span class='p'>,</span><span class='nb'>list</span><span class='p'>)</span> <span class='p'>:</span>
+			<span class='n'>show_list</span><span class='p'>(</span><span class='n'>item</span><span class='p'>)</span>
+		<span class='k'>else</span> <span class='p'>:</span>
+			<span class='k'>print</span><span class='p'>(</span><span class='n'>item</span><span class='p'>)</span>
+
+<span class='n'>show_list</span><span class='p'>(</span><span class='n'>student</span><span class='p'>)</span>
+</code></pre>
+</div>]]></content:encoded>
     </item>
     
     <item>
@@ -261,7 +357,7 @@
 <li><a href='http://book.douban.com/subject/4889838/'>鸟哥的Linux私房菜.基础学习篇（第三版）</a></li>
 </ul>
 
-<h3 id='id89'>其他</h3>
+<h3 id='id330'>其他</h3>
 
 <ul>
 <li><a href='http://book.douban.com/subject/4262627/'>重构</a></li>
@@ -280,11 +376,11 @@
       <pubDate>2012-03-31T20:22:00+08:00</pubDate>
       <author>樊凯</author>
       <guid>http://fankai.me/2012/03/dropboxpages</guid>
-      <content:encoded><![CDATA[<h3 id='id87'>简介</h3>
+      <content:encoded><![CDATA[<h3 id='id328'>简介</h3>
 
 <p>Dropbox是一个出色的文件存储和分享服务,可以帮你在电脑之间同步文件，把重要的文件备份到云端，甚至可以充当一个版本控制工具。Droppages是把Dropbox作为一个轻量级内容管理系统的工具。你只需在Dropbox里创建一个文件夹，然后分享给Droppages，这样很快你就能通过文本文件和文件夹搭起一个网站。你甚至还可以通过CSS和简单的模板设计自定义网站的界面。 Droppages非常适合搭建轻量级网站，速度非常快，无需FTP或登录信息。更牛的是它使用Dropbox对网站内容进行备份，如果你觉得网站出问题了，可以很快回滚到之前的版本。 此外，由于Dropbox已经整合到了数百个应用里面，所以你可以在这些应用里随时编辑你的网站。 <!-- more --></p>
 
-<h3 id='id88'>使用步骤</h3>
+<h3 id='id329'>使用步骤</h3>
 
 <ul>
 <li>点击此<a href='https://www.dropbox.com/referrals/NTUyNDE1Mzc3OQ?src=referrals_twitter9'>链接</a>注册一个dropbox账户，并且安装操作系统对应的Dropbox客户端。</li>
@@ -376,7 +472,7 @@
 </div>
 <p><strong>excludeMethods</strong>属性用来声明哪些方法不被拦截，<strong>includeMethod</strong>属性用来声明哪些方法被拦截，多个方法之间使用英文的逗号进行分割。</p>
 
-<h3 id='id82'>拦截器的配置</h3>
+<h3 id='id323'>拦截器的配置</h3>
 <div class='highlight'><pre><code class='xml'><span class='nt'>&lt;package</span> <span class='na'>name=</span><span class='s'>&quot;mystruts&quot;</span> <span class='na'>extends=</span><span class='s'>&quot;struts-default&quot;</span><span class='nt'>&gt;</span>
 	<span class='nt'>&lt;interceptors&gt;</span>
 		<span class='nt'>&lt;interceptor</span> <span class='na'>name=</span><span class='s'>&quot;loginInterceptor&quot;</span> <span class='na'>class=</span><span class='s'>&quot;com.kaishengit.web.interceptor.LoginInteceptor&quot;</span><span class='nt'>/&gt;</span>
@@ -385,7 +481,7 @@
 <span class='nt'>&lt;/package&gt;</span>
 </code></pre>
 </div>
-<h3 id='id83'>拦截器使用</h3>
+<h3 id='id324'>拦截器使用</h3>
 
 <ul>
 <li>在指定的Action中使用</li>
@@ -420,7 +516,7 @@
 <span class='nt'>&lt;/package&gt;</span>
 </code></pre>
 </div>
-<h3 id='id84'>拦截器实例</h3>
+<h3 id='id325'>拦截器实例</h3>
 
 <h5 id='timer'>自定义Timer拦截器</h5>
 <div class='highlight'><pre><code class='java'><span class='kd'>public</span> <span class='kd'>class</span> <span class='nc'>MyTimerInterceptor</span> <span class='kd'>extends</span> <span class='n'>AbstractInterceptor</span><span class='o'>{</span>
@@ -451,7 +547,7 @@
 <span class='o'>}</span>
 </code></pre>
 </div>
-<h6 id='id85'>登录验证拦截器</h6>
+<h6 id='id326'>登录验证拦截器</h6>
 <div class='highlight'><pre><code class='java'><span class='kd'>public</span> <span class='kd'>class</span> <span class='nc'>LoginInterceptor</span> <span class='kd'>extends</span> <span class='n'>AbstractInterceptor</span><span class='o'>{</span>
 
 	<span class='kd'>private</span> <span class='kd'>static</span> <span class='kd'>final</span> <span class='kt'>long</span> <span class='n'>serialVersionUID</span> <span class='o'>=</span> <span class='mi'>1L</span><span class='o'>;</span>
@@ -503,7 +599,7 @@
 <span class='nt'>&lt;/interceptors&gt;</span>
 </code></pre>
 </div>
-<h2 id='id86'>其他</h2>
+<h2 id='id327'>其他</h2>
 
 <ul>
 <li>获取拦截的Action的完全限定名</li>
