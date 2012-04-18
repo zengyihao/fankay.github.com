@@ -1,0 +1,54 @@
+---
+layout: post
+title: "一个准Java开发工程师应该读的书单"
+date: 2012-03-31 20:43
+comments: true
+categories: 技术相关
+---
+不少同学都会在不同阶段问我该读哪些图书来提高自己的技术，我就列个书单，供大家参考。
+###java基础
+* [Head First Java 第二版](http://book.douban.com/subject/4496038/)
+* [Java核心技术卷1](http://book.douban.com/subject/1781451/)
+* [Java核心技术卷2](http://book.douban.com/subject/3360866/)
+
+
+###SQL
+* [Head First SQL](http://book.douban.com/subject/3719052/)
+* [SQL必知必会](http://book.douban.com/subject/2124377/)
+* [MySQL必知必会](http://book.douban.com/subject/3354490/)
+
+###HTML&&CSS
+* [Head First HTML CSS和XHTML](http://book.douban.com/subject/3040870/)
+* [HTML5高级程序设计](http://book.douban.com/subject/5402708/)
+* [精通CSS:高级Web标准解决方案](http://book.douban.com/subject/1898098/)
+* [CSS实战手册](http://book.douban.com/subject/2208550/)
+* [CSS禅意花园](http://book.douban.com/subject/2052176/)  
+
+<!-- more -->
+
+###JavaScript
+* [Head First JavaScript](http://book.douban.com/subject/2372267/)
+* [JavaScript高级程序设计（第3版)](http://book.douban.com/subject/10546125/)
+* [JavaScript权威指南](http://book.douban.com/subject/2228378/)
+* [Head First JQuery](http://book.douban.com/subject/6688828/)
+* [JQuery基础教程](http://book.douban.com/subject/4111399/)
+
+###JSP/Servlet
+* [Head First Jsp/Servlet](http://book.douban.com/subject/1942934/)
+
+###Struts2 Hibernate Spring
+* [Struts2 in Action](http://book.douban.com/subject/3005866/)
+* [深入浅出Hibernate](http://book.douban.com/subject/1315047/) 讲解的Hibernate版本虽然老了些，但是写的真的非常帮
+* [Spring in Action](http://book.douban.com/subject/3208666/)
+
+### Linux
+* [鸟哥的Linux私房菜.基础学习篇（第三版）](http://book.douban.com/subject/4889838/)
+
+### 其他
+* [重构](http://book.douban.com/subject/4262627/)
+* [Head First 设计模式](http://book.douban.com/subject/2243615/)
+* [代码大全2](http://book.douban.com/subject/2208626/)
+
+
+其实书不在多，而在读精！
+

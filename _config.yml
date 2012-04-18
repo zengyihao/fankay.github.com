@@ -1,0 +1,6 @@
+permalink: /:year/:month/:title/
+url: http://fankai.me
+author: 樊凯
+pygments: true
+paginate: 16
+auto: true
