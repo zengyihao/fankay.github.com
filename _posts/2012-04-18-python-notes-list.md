@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Python学习笔记(一)
+title: Python学习笔记(一):列表和函数初步
 date: 2012-04-18 17:11
 comments: true
 categories: Python
