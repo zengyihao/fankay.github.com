@@ -29,7 +29,7 @@
         <section class="post">
 <p><img alt='Python' src='http://www.python.org/images/python-logo.gif' /></p>
 
-<h4 id='id175'>逐行读取文件</h4>
+<h4 id='id51'>逐行读取文件</h4>
 
 <p>Python中提供了<em>open(filename)</em>函数用于读取磁盘上的文件,示例代码：</p>
 <div class='highlight'><pre><code class='python'><span class='n'>data</span> <span class='o'>=</span> <span class='nb'>open</span><span class='p'>(</span><span class='s'>&quot;data.txt&quot;</span><span class='p'>)</span>
@@ -46,14 +46,14 @@
 <div class='highlight'><pre><code class='python'><span class='n'>data</span><span class='o'>.</span><span class='n'>close</span><span class='p'>()</span>
 </code></pre>
 </div>
-<h4 id='id176'>利用循环来读取文件</h4>
+<h4 id='id52'>利用循环来读取文件</h4>
 <div class='highlight'><pre><code class='python'><span class='n'>data</span> <span class='o'>=</span> <span class='nb'>open</span><span class='p'>(</span><span class='s'>&quot;data.txt&quot;</span><span class='p'>)</span>
 <span class='k'>for</span> <span class='n'>line</span> <span class='ow'>in</span> <span class='n'>data</span> <span class='p'>:</span>
 	<span class='k'>print</span><span class='p'>(</span><span class='n'>line</span><span class='p'>)</span>
 <span class='n'>data</span><span class='o'>.</span><span class='n'>close</span><span class='p'>()</span>
 </code></pre>
 </div>
-<h4 id='id177'>读取不存在的文件</h4>
+<h4 id='id53'>读取不存在的文件</h4>
 
 <p>如果使用Python来读取一个不存在的文件，则会引发<strong>IOError</strong>异常，Python中采用了和Java中一样的异常处理机制来处理异常。</p>
 <div class='highlight'><pre><code class='python'><span class='k'>try</span> <span class='p'>:</span>
@@ -85,7 +85,7 @@
 	<span class='k'>print</span><span class='p'>(</span><span class='s'>&quot;can&#39;t find this file&quot;</span><span class='p'>)</span>
 </code></pre>
 </div>
-<h4 id='id178'>其他知识点</h4>
+<h4 id='id54'>其他知识点</h4>
 
 <ol>
 <li>通过<em>a,b = 12,34</em>可以同时给变量a和变量b赋值，a的值为12，b的值为34</li>

@@ -7,7 +7,7 @@
     <title>樊凯</title>
     <link href="http://fankai.me/feed/" rel="self" />
     <link href="http://fankai.me/" />
-    <lastBuildDate>2012-04-20T11:48:12+08:00</lastBuildDate>
+    <lastBuildDate>2012-04-20T11:54:50+08:00</lastBuildDate>
     <webMaster>fankai@kaishengit.com</webMaster>
     
     <item>
@@ -18,7 +18,7 @@
       <guid>http://fankai.me/2012/04/python-notes-file</guid>
       <content:encoded><![CDATA[<p><img alt='Python' src='http://www.python.org/images/python-logo.gif' /></p>
 
-<h4 id='id175'>逐行读取文件</h4>
+<h4 id='id51'>逐行读取文件</h4>
 
 <p>Python中提供了<em>open(filename)</em>函数用于读取磁盘上的文件,示例代码：</p>
 <div class='highlight'><pre><code class='python'><span class='n'>data</span> <span class='o'>=</span> <span class='nb'>open</span><span class='p'>(</span><span class='s'>&quot;data.txt&quot;</span><span class='p'>)</span>
@@ -35,14 +35,14 @@
 <div class='highlight'><pre><code class='python'><span class='n'>data</span><span class='o'>.</span><span class='n'>close</span><span class='p'>()</span>
 </code></pre>
 </div>
-<h4 id='id176'>利用循环来读取文件</h4>
+<h4 id='id52'>利用循环来读取文件</h4>
 <div class='highlight'><pre><code class='python'><span class='n'>data</span> <span class='o'>=</span> <span class='nb'>open</span><span class='p'>(</span><span class='s'>&quot;data.txt&quot;</span><span class='p'>)</span>
 <span class='k'>for</span> <span class='n'>line</span> <span class='ow'>in</span> <span class='n'>data</span> <span class='p'>:</span>
 	<span class='k'>print</span><span class='p'>(</span><span class='n'>line</span><span class='p'>)</span>
 <span class='n'>data</span><span class='o'>.</span><span class='n'>close</span><span class='p'>()</span>
 </code></pre>
 </div>
-<h4 id='id177'>读取不存在的文件</h4>
+<h4 id='id53'>读取不存在的文件</h4>
 
 <p>如果使用Python来读取一个不存在的文件，则会引发<strong>IOError</strong>异常，Python中采用了和Java中一样的异常处理机制来处理异常。</p>
 <div class='highlight'><pre><code class='python'><span class='k'>try</span> <span class='p'>:</span>
@@ -74,7 +74,7 @@
 	<span class='k'>print</span><span class='p'>(</span><span class='s'>&quot;can&#39;t find this file&quot;</span><span class='p'>)</span>
 </code></pre>
 </div>
-<h4 id='id178'>其他知识点</h4>
+<h4 id='id54'>其他知识点</h4>
 
 <ol>
 <li>通过<em>a,b = 12,34</em>可以同时给变量a和变量b赋值，a的值为12，b的值为34</li>
@@ -95,7 +95,7 @@
       <guid>http://fankai.me/2012/04/python-notes-function</guid>
       <content:encoded><![CDATA[<p><img alt='Python' src='http://www.python.org/images/python-logo.gif' /></p>
 
-<h4 id='id173'>函数中的参数</h4>
+<h4 id='id49'>函数中的参数</h4>
 
 <p>定义一个函数，在函数中打印N(参数)次“This is Python”，示例如下：</p>
 <div class='highlight'><pre><code class='python'><span class='k'>def</span> <span class='nf'>print_msg</span><span class='p'>(</span><span class='n'>num</span><span class='p'>)</span> <span class='p'>:</span>
@@ -108,7 +108,7 @@
 </div>
 <p>其中<em>range()</em>函数会返回一个迭代器，生成一个从0到某个数(不包含该数)的数字列表</p>
 
-<h4 id='id174'>参数中的默认值</h4>
+<h4 id='id50'>参数中的默认值</h4>
 
 <p>上面的打印函数中，需要定义默认打印的次数的5次。在调用该函数时可以重新定义打印次数，如果未定义打印次数，则就采用默认的打印次数5，示例如下：</p>
 <div class='highlight'><pre><code class='python'><span class='k'>def</span> <span class='nf'>print_msg</span><span class='p'>(</span><span class='n'>num</span> <span class='o'>=</span> <span class='mi'>5</span><span class='p'>)</span> <span class='p'>:</span>
@@ -163,7 +163,7 @@
 <li><em>print()</em>函数用于向控制台中打印内容，例如<em>print(student[0])</em></li>
 </ol>
 
-<h5 id='id169'>列表实例代码</h5>
+<h5 id='id45'>列表实例代码</h5>
 <div class='highlight'><pre><code class='python'><span class='n'>student</span> <span class='o'>=</span> <span class='p'>[</span><span class='s'>&quot;Jack&quot;</span><span class='p'>,</span><span class='s'>&quot;Tom&quot;</span><span class='p'>,</span><span class='s'>&quot;Jerry&quot;</span><span class='p'>,</span><span class='s'>&quot;Rose&quot;</span><span class='p'>]</span>
 <span class='k'>print</span><span class='p'>(</span><span class='nb'>len</span><span class='p'>(</span><span class='n'>student</span><span class='p'>))</span>
 <span class='k'>print</span><span class='p'>(</span><span class='n'>student</span>\<span class='p'>[</span><span class='mi'>1</span>\<span class='p'>])</span>
@@ -191,7 +191,7 @@
 <li>insert()函数用于在特定的位置前添加一个数据项</li>
 </ol>
 
-<h5 id='id170'>利用循环迭代列表</h5>
+<h5 id='id46'>利用循环迭代列表</h5>
 <div class='highlight'><pre><code class='python'><span class='k'>for</span> <span class='n'>stu</span> <span class='ow'>in</span> <span class='n'>student</span><span class='p'>:</span>
 	<span class='k'>print</span><span class='p'>(</span><span class='nb'>str</span><span class='p'>)</span>
 <span class='c'>#or</span>
@@ -211,7 +211,7 @@
 <li>Python没有index++这种语法</li>
 </ol>
 
-<h5 id='id171'>列表中可以混合存放多种数据类型的数据</h5>
+<h5 id='id47'>列表中可以混合存放多种数据类型的数据</h5>
 
 <p>例如：</p>
 <div class='highlight'><pre><code class='python'><span class='n'>student</span> <span class='o'>=</span> <span class='p'>[</span><span class='s'>&quot;Tom&quot;</span><span class='p'>,</span><span class='mi'>23</span><span class='p'>,</span><span class='s'>&quot;Jerry&quot;</span><span class='p'>,</span><span class='mi'>22</span><span class='p'>,</span><span class='s'>&quot;Rose&quot;</span><span class='p'>,</span><span class='mi'>18</span><span class='p'>]</span>
@@ -247,7 +247,7 @@
 <div class='highlight'><pre><code class='python'><span class='n'>show_list</span><span class='p'>(</span><span class='n'>student</span><span class='p'>)</span>
 </code></pre>
 </div>
-<h5 id='id172'>注释</h5>
+<h5 id='id48'>注释</h5>
 
 <ol>
 <li>Python中多行注释可以以三个双引号(或三个单引号)开始，以三个双引号(单引号)结束</li>
@@ -470,7 +470,7 @@
 <li><a href='http://book.douban.com/subject/4889838/'>鸟哥的Linux私房菜.基础学习篇（第三版）</a></li>
 </ul>
 
-<h3 id='id168'>其他</h3>
+<h3 id='id44'>其他</h3>
 
 <ul>
 <li><a href='http://book.douban.com/subject/4262627/'>重构</a></li>
@@ -489,11 +489,11 @@
       <pubDate>2012-03-31T20:22:00+08:00</pubDate>
       <author>樊凯</author>
       <guid>http://fankai.me/2012/03/dropboxpages</guid>
-      <content:encoded><![CDATA[<h3 id='id166'>简介</h3>
+      <content:encoded><![CDATA[<h3 id='id42'>简介</h3>
 
 <p>Dropbox是一个出色的文件存储和分享服务,可以帮你在电脑之间同步文件，把重要的文件备份到云端，甚至可以充当一个版本控制工具。Droppages是把Dropbox作为一个轻量级内容管理系统的工具。你只需在Dropbox里创建一个文件夹，然后分享给Droppages，这样很快你就能通过文本文件和文件夹搭起一个网站。你甚至还可以通过CSS和简单的模板设计自定义网站的界面。 Droppages非常适合搭建轻量级网站，速度非常快，无需FTP或登录信息。更牛的是它使用Dropbox对网站内容进行备份，如果你觉得网站出问题了，可以很快回滚到之前的版本。 此外，由于Dropbox已经整合到了数百个应用里面，所以你可以在这些应用里随时编辑你的网站。 <!-- more --></p>
 
-<h3 id='id167'>使用步骤</h3>
+<h3 id='id43'>使用步骤</h3>
 
 <ul>
 <li>点击此<a href='https://www.dropbox.com/referrals/NTUyNDE1Mzc3OQ?src=referrals_twitter9'>链接</a>注册一个dropbox账户，并且安装操作系统对应的Dropbox客户端。</li>
