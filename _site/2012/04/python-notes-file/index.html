@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="樊凯" />
+    <title>Python学习笔记(三):读文件与异常处理 | 樊凯</title>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link href="/feed/" rel="alternate" title="樊凯" type="application/atom+xml" />
+    <link rel="stylesheet" href="/media/css/style.css">
+    <link rel="stylesheet" href="/media/css/highlight.css">
+    <script type="text/javascript" src="/media/js/jquery-1.7.1.min.js"></script>
+  </head>
+  <body>
+    <div id="container">
+      <div id="main" role="main">
+        <header>
+        <h1>Python学习笔记(三):读文件与异常处理</h1>
+        </header>
+        <nav>
+        <span><a title="home page" class="" href="/">Home</a></span>
+        <span><a title="about" class="" href="/about/">About</a></span>
+        <span><a title="guestbook" class="" href="/guestbook/">Guestbook</a></span>
+        <span><a title="categories" class="" href="/categories/">Categories</a></span>
+        <span><a title="tags" class="" href="/tags/">Tags</a></span>
+        <span><a title="links" class="" href="/links/">Links</a></span>
+        <span><a title="subscribe by RSS" class="" href="/feed/">Subscribe</a></span>
+        </nav>
+        <article class="content">
+        <section class="post">
+<p><img alt='Python' src='http://www.python.org/images/python-logo.gif' /></p>
+
+<h4 id='id175'>逐行读取文件</h4>
+
+<p>Python中提供了<em>open(filename)</em>函数用于读取磁盘上的文件,示例代码：</p>
+<div class='highlight'><pre><code class='python'><span class='n'>data</span> <span class='o'>=</span> <span class='nb'>open</span><span class='p'>(</span><span class='s'>&quot;data.txt&quot;</span><span class='p'>)</span>
+</code></pre>
+</div>
+<p>将文件读取后赋给变量data，然后通过Python内置的函数<em>readline()</em>来读取文件中的一行数据。</p>
+<div class='highlight'><pre><code class='python'><span class='c'>#读取第一行文本</span>
+<span class='n'>line_txt</span> <span class='o'>=</span> <span class='n'>data</span><span class='o'>.</span><span class='n'>readline</span><span class='p'>()</span>
+<span class='c'>#读取第二行文本</span>
+<span class='n'>next_txt</span> <span class='o'>=</span> <span class='n'>data</span><span class='o'>.</span><span class='n'>readline</span><span class='p'>()</span>
+</code></pre>
+</div>
+<p>需要要注意的是，文件读取完毕后，一定要调用<em>close()</em>方法来关闭文件。</p>
+<div class='highlight'><pre><code class='python'><span class='n'>data</span><span class='o'>.</span><span class='n'>close</span><span class='p'>()</span>
+</code></pre>
+</div>
+<h4 id='id176'>利用循环来读取文件</h4>
+<div class='highlight'><pre><code class='python'><span class='n'>data</span> <span class='o'>=</span> <span class='nb'>open</span><span class='p'>(</span><span class='s'>&quot;data.txt&quot;</span><span class='p'>)</span>
+<span class='k'>for</span> <span class='n'>line</span> <span class='ow'>in</span> <span class='n'>data</span> <span class='p'>:</span>
+	<span class='k'>print</span><span class='p'>(</span><span class='n'>line</span><span class='p'>)</span>
+<span class='n'>data</span><span class='o'>.</span><span class='n'>close</span><span class='p'>()</span>
+</code></pre>
+</div>
+<h4 id='id177'>读取不存在的文件</h4>
+
+<p>如果使用Python来读取一个不存在的文件，则会引发<strong>IOError</strong>异常，Python中采用了和Java中一样的异常处理机制来处理异常。</p>
+<div class='highlight'><pre><code class='python'><span class='k'>try</span> <span class='p'>:</span>
+	<span class='n'>data</span> <span class='o'>=</span> <span class='nb'>open</span><span class='p'>(</span><span class='s'>&quot;data.txt&quot;</span><span class='p'>)</span>
+	<span class='k'>for</span> <span class='n'>line</span> <span class='ow'>in</span> <span class='n'>data</span> <span class='p'>:</span>
+		<span class='k'>print</span><span class='p'>(</span><span class='n'>line</span><span class='p'>)</span>
+	<span class='n'>data</span><span class='o'>.</span><span class='n'>close</span><span class='p'>()</span>
+<span class='k'>except</span> <span class='p'>:</span>
+	<span class='k'>pass</span>
+</code></pre>
+</div>
+<p>上面的<strong>pass</strong>关键字表示什么都不做，相当与Java中的空或null，如果需要在命令行中输出提示，可以这样：</p>
+<div class='highlight'><pre><code class='python'><span class='k'>try</span> <span class='p'>:</span>
+	<span class='n'>data</span> <span class='o'>=</span> <span class='nb'>open</span><span class='p'>(</span><span class='s'>&quot;data.txt&quot;</span><span class='p'>)</span>
+	<span class='k'>for</span> <span class='n'>line</span> <span class='ow'>in</span> <span class='n'>data</span> <span class='p'>:</span>
+		<span class='k'>print</span><span class='p'>(</span><span class='n'>line</span><span class='p'>)</span>
+	<span class='n'>data</span><span class='o'>.</span><span class='n'>close</span><span class='p'>()</span>
+<span class='k'>except</span> <span class='p'>:</span>
+	<span class='k'>print</span><span class='p'>(</span><span class='s'>&quot;can&#39;t find this file&quot;</span><span class='p'>)</span>
+</code></pre>
+</div>
+<p>使用<strong>try:…except:…</strong>语法可以处理所有的异常，如果需要指定处理某个异常，例如上面例子中找不到文件的异常IOError，则可以在<strong>except</strong>语句中指出：</p>
+<div class='highlight'><pre><code class='python'><span class='k'>try</span> <span class='p'>:</span>
+	<span class='n'>data</span> <span class='o'>=</span> <span class='nb'>open</span><span class='p'>(</span><span class='s'>&quot;data.txt&quot;</span><span class='p'>)</span>
+	<span class='k'>for</span> <span class='n'>line</span> <span class='ow'>in</span> <span class='n'>data</span> <span class='p'>:</span>
+		<span class='k'>print</span><span class='p'>(</span><span class='n'>line</span><span class='p'>)</span>
+	<span class='n'>data</span><span class='o'>.</span><span class='n'>close</span><span class='p'>()</span>
+<span class='k'>except</span> <span class='ne'>IOError</span><span class='p'>:</span>
+	<span class='k'>print</span><span class='p'>(</span><span class='s'>&quot;can&#39;t find this file&quot;</span><span class='p'>)</span>
+</code></pre>
+</div>
+<h4 id='id178'>其他知识点</h4>
+
+<ol>
+<li>通过<em>a,b = 12,34</em>可以同时给变量a和变量b赋值，a的值为12，b的值为34</li>
+
+<li>在文件的读的过程中调用<em>seek()</em>函数可以让文件回到第一行的位置重新读取</li>
+
+<li>字符串的<em>split(sep)</em>函数可以将一个字符串根据sep分割为列表</li>
+
+<li>字符串的<em>find(str)</em>可以在字符串中查找str的下标，如果未找到，则返回-1</li>
+</ol>
+</section>
+<section class="meta">
+<span class="author">
+  <a href="http://fankai.me">樊凯</a>
+</span>
+<span class="time">
+  /
+  <time datetime="2012-04-20">2012-04-20</time>
+</span>
+<br />
+<span class="license">
+  Published under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">(CC) BY-NC-SA</a>
+</span>
+
+<span class="categories">
+  in categories
+  
+  <a href="/categories/#Python" title="Python">Python</a>&nbsp;
+  
+</span>
+
+
+<span class="tags">
+  tagged with 
+  
+</span>
+
+</section>
+<section class="comment">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'fankaysblog'; // required: replace example with your forum shortname
+    var disqus_url = 'http://fankai.me/2012/04/python-notes-file/';
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+<script type="text/javascript">
+$(function(){
+  $(document).keydown(function(e) {
+    var url = false;
+        if (e.which == 37 || e.which == 74) {  // Left arrow and J
+            
+        url = 'http://fankai.me/2012/04/python-notes-function/';
+        
+        }
+        else if (e.which == 39 || e.which == 75) {  // Right arrow and K
+            
+        }
+        if (url) {
+            window.location = url;
+        }
+  });
+})
+</script>
+
+
+        </article>
+      </div>
+
+    <footer>
+        <p><small>Powered by <a href="https://github.com/mojombo/jekyll">Jekyll</a> & <a href="http://pages.github.com">GitHub</a> | Copyright 2012 - 2012 by <a href="http://fankai.me">樊凯</a> | <a href="http://www.kaishengit.com">凯盛软件</a></small></p>
+    </footer>
+
+    </div>
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-30096094-1']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+  </body>
+</html>

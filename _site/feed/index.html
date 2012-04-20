@@ -7,8 +7,85 @@
     <title>樊凯</title>
     <link href="http://fankai.me/feed/" rel="self" />
     <link href="http://fankai.me/" />
-    <lastBuildDate>2012-04-20T09:22:11+08:00</lastBuildDate>
+    <lastBuildDate>2012-04-20T11:48:12+08:00</lastBuildDate>
     <webMaster>fankai@kaishengit.com</webMaster>
+    
+    <item>
+      <title>Python学习笔记(三):读文件与异常处理</title>
+      <link href="http://fankai.me/2012/04/python-notes-file/"/>
+      <pubDate>2012-04-20T09:24:00+08:00</pubDate>
+      <author>樊凯</author>
+      <guid>http://fankai.me/2012/04/python-notes-file</guid>
+      <content:encoded><![CDATA[<p><img alt='Python' src='http://www.python.org/images/python-logo.gif' /></p>
+
+<h4 id='id175'>逐行读取文件</h4>
+
+<p>Python中提供了<em>open(filename)</em>函数用于读取磁盘上的文件,示例代码：</p>
+<div class='highlight'><pre><code class='python'><span class='n'>data</span> <span class='o'>=</span> <span class='nb'>open</span><span class='p'>(</span><span class='s'>&quot;data.txt&quot;</span><span class='p'>)</span>
+</code></pre>
+</div>
+<p>将文件读取后赋给变量data，然后通过Python内置的函数<em>readline()</em>来读取文件中的一行数据。</p>
+<div class='highlight'><pre><code class='python'><span class='c'>#读取第一行文本</span>
+<span class='n'>line_txt</span> <span class='o'>=</span> <span class='n'>data</span><span class='o'>.</span><span class='n'>readline</span><span class='p'>()</span>
+<span class='c'>#读取第二行文本</span>
+<span class='n'>next_txt</span> <span class='o'>=</span> <span class='n'>data</span><span class='o'>.</span><span class='n'>readline</span><span class='p'>()</span>
+</code></pre>
+</div>
+<p>需要要注意的是，文件读取完毕后，一定要调用<em>close()</em>方法来关闭文件。</p>
+<div class='highlight'><pre><code class='python'><span class='n'>data</span><span class='o'>.</span><span class='n'>close</span><span class='p'>()</span>
+</code></pre>
+</div>
+<h4 id='id176'>利用循环来读取文件</h4>
+<div class='highlight'><pre><code class='python'><span class='n'>data</span> <span class='o'>=</span> <span class='nb'>open</span><span class='p'>(</span><span class='s'>&quot;data.txt&quot;</span><span class='p'>)</span>
+<span class='k'>for</span> <span class='n'>line</span> <span class='ow'>in</span> <span class='n'>data</span> <span class='p'>:</span>
+	<span class='k'>print</span><span class='p'>(</span><span class='n'>line</span><span class='p'>)</span>
+<span class='n'>data</span><span class='o'>.</span><span class='n'>close</span><span class='p'>()</span>
+</code></pre>
+</div>
+<h4 id='id177'>读取不存在的文件</h4>
+
+<p>如果使用Python来读取一个不存在的文件，则会引发<strong>IOError</strong>异常，Python中采用了和Java中一样的异常处理机制来处理异常。</p>
+<div class='highlight'><pre><code class='python'><span class='k'>try</span> <span class='p'>:</span>
+	<span class='n'>data</span> <span class='o'>=</span> <span class='nb'>open</span><span class='p'>(</span><span class='s'>&quot;data.txt&quot;</span><span class='p'>)</span>
+	<span class='k'>for</span> <span class='n'>line</span> <span class='ow'>in</span> <span class='n'>data</span> <span class='p'>:</span>
+		<span class='k'>print</span><span class='p'>(</span><span class='n'>line</span><span class='p'>)</span>
+	<span class='n'>data</span><span class='o'>.</span><span class='n'>close</span><span class='p'>()</span>
+<span class='k'>except</span> <span class='p'>:</span>
+	<span class='k'>pass</span>
+</code></pre>
+</div>
+<p>上面的<strong>pass</strong>关键字表示什么都不做，相当与Java中的空或null，如果需要在命令行中输出提示，可以这样：</p>
+<div class='highlight'><pre><code class='python'><span class='k'>try</span> <span class='p'>:</span>
+	<span class='n'>data</span> <span class='o'>=</span> <span class='nb'>open</span><span class='p'>(</span><span class='s'>&quot;data.txt&quot;</span><span class='p'>)</span>
+	<span class='k'>for</span> <span class='n'>line</span> <span class='ow'>in</span> <span class='n'>data</span> <span class='p'>:</span>
+		<span class='k'>print</span><span class='p'>(</span><span class='n'>line</span><span class='p'>)</span>
+	<span class='n'>data</span><span class='o'>.</span><span class='n'>close</span><span class='p'>()</span>
+<span class='k'>except</span> <span class='p'>:</span>
+	<span class='k'>print</span><span class='p'>(</span><span class='s'>&quot;can&#39;t find this file&quot;</span><span class='p'>)</span>
+</code></pre>
+</div>
+<p>使用<strong>try:…except:…</strong>语法可以处理所有的异常，如果需要指定处理某个异常，例如上面例子中找不到文件的异常IOError，则可以在<strong>except</strong>语句中指出：</p>
+<div class='highlight'><pre><code class='python'><span class='k'>try</span> <span class='p'>:</span>
+	<span class='n'>data</span> <span class='o'>=</span> <span class='nb'>open</span><span class='p'>(</span><span class='s'>&quot;data.txt&quot;</span><span class='p'>)</span>
+	<span class='k'>for</span> <span class='n'>line</span> <span class='ow'>in</span> <span class='n'>data</span> <span class='p'>:</span>
+		<span class='k'>print</span><span class='p'>(</span><span class='n'>line</span><span class='p'>)</span>
+	<span class='n'>data</span><span class='o'>.</span><span class='n'>close</span><span class='p'>()</span>
+<span class='k'>except</span> <span class='ne'>IOError</span><span class='p'>:</span>
+	<span class='k'>print</span><span class='p'>(</span><span class='s'>&quot;can&#39;t find this file&quot;</span><span class='p'>)</span>
+</code></pre>
+</div>
+<h4 id='id178'>其他知识点</h4>
+
+<ol>
+<li>通过<em>a,b = 12,34</em>可以同时给变量a和变量b赋值，a的值为12，b的值为34</li>
+
+<li>在文件的读的过程中调用<em>seek()</em>函数可以让文件回到第一行的位置重新读取</li>
+
+<li>字符串的<em>split(sep)</em>函数可以将一个字符串根据sep分割为列表</li>
+
+<li>字符串的<em>find(str)</em>可以在字符串中查找str的下标，如果未找到，则返回-1</li>
+</ol>]]></content:encoded>
+    </item>
     
     <item>
       <title>Python学习笔记(二):函数</title>
@@ -18,7 +95,7 @@
       <guid>http://fankai.me/2012/04/python-notes-function</guid>
       <content:encoded><![CDATA[<p><img alt='Python' src='http://www.python.org/images/python-logo.gif' /></p>
 
-<h4 id='id110'>函数中的参数</h4>
+<h4 id='id173'>函数中的参数</h4>
 
 <p>定义一个函数，在函数中打印N(参数)次“This is Python”，示例如下：</p>
 <div class='highlight'><pre><code class='python'><span class='k'>def</span> <span class='nf'>print_msg</span><span class='p'>(</span><span class='n'>num</span><span class='p'>)</span> <span class='p'>:</span>
@@ -31,7 +108,7 @@
 </div>
 <p>其中<em>range()</em>函数会返回一个迭代器，生成一个从0到某个数(不包含该数)的数字列表</p>
 
-<h4 id='id111'>参数中的默认值</h4>
+<h4 id='id174'>参数中的默认值</h4>
 
 <p>上面的打印函数中，需要定义默认打印的次数的5次。在调用该函数时可以重新定义打印次数，如果未定义打印次数，则就采用默认的打印次数5，示例如下：</p>
 <div class='highlight'><pre><code class='python'><span class='k'>def</span> <span class='nf'>print_msg</span><span class='p'>(</span><span class='n'>num</span> <span class='o'>=</span> <span class='mi'>5</span><span class='p'>)</span> <span class='p'>:</span>
@@ -86,7 +163,7 @@
 <li><em>print()</em>函数用于向控制台中打印内容，例如<em>print(student[0])</em></li>
 </ol>
 
-<h5 id='id106'>列表实例代码</h5>
+<h5 id='id169'>列表实例代码</h5>
 <div class='highlight'><pre><code class='python'><span class='n'>student</span> <span class='o'>=</span> <span class='p'>[</span><span class='s'>&quot;Jack&quot;</span><span class='p'>,</span><span class='s'>&quot;Tom&quot;</span><span class='p'>,</span><span class='s'>&quot;Jerry&quot;</span><span class='p'>,</span><span class='s'>&quot;Rose&quot;</span><span class='p'>]</span>
 <span class='k'>print</span><span class='p'>(</span><span class='nb'>len</span><span class='p'>(</span><span class='n'>student</span><span class='p'>))</span>
 <span class='k'>print</span><span class='p'>(</span><span class='n'>student</span>\<span class='p'>[</span><span class='mi'>1</span>\<span class='p'>])</span>
@@ -114,7 +191,7 @@
 <li>insert()函数用于在特定的位置前添加一个数据项</li>
 </ol>
 
-<h5 id='id107'>利用循环迭代列表</h5>
+<h5 id='id170'>利用循环迭代列表</h5>
 <div class='highlight'><pre><code class='python'><span class='k'>for</span> <span class='n'>stu</span> <span class='ow'>in</span> <span class='n'>student</span><span class='p'>:</span>
 	<span class='k'>print</span><span class='p'>(</span><span class='nb'>str</span><span class='p'>)</span>
 <span class='c'>#or</span>
@@ -134,7 +211,7 @@
 <li>Python没有index++这种语法</li>
 </ol>
 
-<h5 id='id108'>列表中可以混合存放多种数据类型的数据</h5>
+<h5 id='id171'>列表中可以混合存放多种数据类型的数据</h5>
 
 <p>例如：</p>
 <div class='highlight'><pre><code class='python'><span class='n'>student</span> <span class='o'>=</span> <span class='p'>[</span><span class='s'>&quot;Tom&quot;</span><span class='p'>,</span><span class='mi'>23</span><span class='p'>,</span><span class='s'>&quot;Jerry&quot;</span><span class='p'>,</span><span class='mi'>22</span><span class='p'>,</span><span class='s'>&quot;Rose&quot;</span><span class='p'>,</span><span class='mi'>18</span><span class='p'>]</span>
@@ -170,7 +247,7 @@
 <div class='highlight'><pre><code class='python'><span class='n'>show_list</span><span class='p'>(</span><span class='n'>student</span><span class='p'>)</span>
 </code></pre>
 </div>
-<h5 id='id109'>注释</h5>
+<h5 id='id172'>注释</h5>
 
 <ol>
 <li>Python中多行注释可以以三个双引号(或三个单引号)开始，以三个双引号(单引号)结束</li>
@@ -393,7 +470,7 @@
 <li><a href='http://book.douban.com/subject/4889838/'>鸟哥的Linux私房菜.基础学习篇（第三版）</a></li>
 </ul>
 
-<h3 id='id105'>其他</h3>
+<h3 id='id168'>其他</h3>
 
 <ul>
 <li><a href='http://book.douban.com/subject/4262627/'>重构</a></li>
@@ -412,11 +489,11 @@
       <pubDate>2012-03-31T20:22:00+08:00</pubDate>
       <author>樊凯</author>
       <guid>http://fankai.me/2012/03/dropboxpages</guid>
-      <content:encoded><![CDATA[<h3 id='id103'>简介</h3>
+      <content:encoded><![CDATA[<h3 id='id166'>简介</h3>
 
 <p>Dropbox是一个出色的文件存储和分享服务,可以帮你在电脑之间同步文件，把重要的文件备份到云端，甚至可以充当一个版本控制工具。Droppages是把Dropbox作为一个轻量级内容管理系统的工具。你只需在Dropbox里创建一个文件夹，然后分享给Droppages，这样很快你就能通过文本文件和文件夹搭起一个网站。你甚至还可以通过CSS和简单的模板设计自定义网站的界面。 Droppages非常适合搭建轻量级网站，速度非常快，无需FTP或登录信息。更牛的是它使用Dropbox对网站内容进行备份，如果你觉得网站出问题了，可以很快回滚到之前的版本。 此外，由于Dropbox已经整合到了数百个应用里面，所以你可以在这些应用里随时编辑你的网站。 <!-- more --></p>
 
-<h3 id='id104'>使用步骤</h3>
+<h3 id='id167'>使用步骤</h3>
 
 <ul>
 <li>点击此<a href='https://www.dropbox.com/referrals/NTUyNDE1Mzc3OQ?src=referrals_twitter9'>链接</a>注册一个dropbox账户，并且安装操作系统对应的Dropbox客户端。</li>
@@ -429,220 +506,6 @@
 </ul>
 
 <p>我的测试<a href='http://fankai.droppages.com/'>droppages</a></p>]]></content:encoded>
-    </item>
-    
-    <item>
-      <title>Struts2 Interceptor(拦截器)备忘</title>
-      <link href="http://fankai.me/2012/03/struts2-interceptor/"/>
-      <pubDate>2012-03-19T11:17:00+08:00</pubDate>
-      <author>樊凯</author>
-      <guid>http://fankai.me/2012/03/struts2-interceptor</guid>
-      <content:encoded><![CDATA[<blockquote>
-<p>这个不是给初学struts2的同学看的，至少你需要掌握Action概念及Struts2的基本配置，以及了解什么是拦截器</p>
-</blockquote>
-
-<h3 id='struts2'>Struts2中拦截器的分类</h3>
-
-<ul>
-<li>普通拦截器，需要实现<strong>com.opensymphony.xwork2.interceptor.Interceptor</strong>接口</li>
-</ul>
-<div class='highlight'><pre><code class='java'><span class='kn'>import</span> <span class='nn'>com.opensymphony.xwork2.ActionInvocation</span><span class='o'>;</span>
-<span class='kn'>import</span> <span class='nn'>com.opensymphony.xwork2.interceptor.Interceptor</span><span class='o'>;</span>
-
-<span class='kd'>public</span> <span class='kd'>class</span> <span class='nc'>LoginInterceptor</span> <span class='kd'>implements</span> <span class='n'>Interceptor</span><span class='o'>{</span>
-
-	<span class='kd'>private</span> <span class='kd'>static</span> <span class='kd'>final</span> <span class='kt'>long</span> <span class='n'>serialVersionUID</span> <span class='o'>=</span> <span class='mi'>1L</span><span class='o'>;</span>
-
-	<span class='kd'>public</span> <span class='kt'>void</span> <span class='nf'>destroy</span><span class='o'>()</span> <span class='o'>{</span>
-		
-	<span class='o'>}</span>
-
-	<span class='kd'>public</span> <span class='kt'>void</span> <span class='nf'>init</span><span class='o'>()</span> <span class='o'>{</span>
-		
-	<span class='o'>}</span>
-
-	<span class='kd'>public</span> <span class='n'>String</span> <span class='nf'>intercept</span><span class='o'>(</span><span class='n'>ActionInvocation</span> <span class='n'>invocation</span><span class='o'>)</span> <span class='kd'>throws</span> <span class='n'>Exception</span> <span class='o'>{</span>
-		<span class='k'>return</span> <span class='kc'>null</span><span class='o'>;</span>
-	<span class='o'>}</span>
-<span class='o'>}</span>
-</code></pre>
-</div><!-- more -->
-<p>其中<strong>init</strong>方法用于拦截器进行初始化操作时调用，<strong>destroy</strong>方法用于拦截器销毁时调用，<strong>intercept</strong>方法则是拦截器的核心方法。<br />在大部分的情况下，我们不需要实现<strong>init</strong>方法以及<strong>destroy</strong>方法，那么此时只需要让拦截器类继承自<strong>com.opensymphony.xwork2.interceptor.AbstractInterceptor</strong>类，该类使用适配器模式对<strong>init</strong>方法和<strong>destroy</strong>方法进行了空实现，具体可以查看该类的源代码。</p>
-<div class='highlight'><pre><code class='java'><span class='kn'>import</span> <span class='nn'>com.opensymphony.xwork2.ActionInvocation</span><span class='o'>;</span>
-<span class='kn'>import</span> <span class='nn'>com.opensymphony.xwork2.interceptor.AbstractInterceptor</span><span class='o'>;</span>
-
-<span class='kd'>public</span> <span class='kd'>class</span> <span class='nc'>LoginInterceptor</span> <span class='kd'>extends</span> <span class='n'>AbstractInterceptor</span><span class='o'>{</span>
-
-	<span class='kd'>private</span> <span class='kd'>static</span> <span class='kd'>final</span> <span class='kt'>long</span> <span class='n'>serialVersionUID</span> <span class='o'>=</span> <span class='mi'>1L</span><span class='o'>;</span>
-
-	<span class='nd'>@Override</span>
-	<span class='kd'>public</span> <span class='n'>String</span> <span class='nf'>intercept</span><span class='o'>(</span><span class='n'>ActionInvocation</span> <span class='n'>invocation</span><span class='o'>)</span> <span class='kd'>throws</span> <span class='n'>Exception</span> <span class='o'>{</span>
-		<span class='k'>return</span> <span class='kc'>null</span><span class='o'>;</span>
-	<span class='o'>}</span>
-<span class='o'>}</span>
-</code></pre>
-</div>
-<p>* 方法拦截器<br />普通的拦截器对一个<em>Action</em>中所有的业务方法都会进行拦截，如果我们需要仅对<em>Action</em>中某些方法进行拦截，或者说某些方法排除在拦截范围之外，此时就需要让自己的拦截器继承自<strong>com.opensymphony.xwork2.interceptor.MethodFilterInterceptor</strong>这个抽象类</p>
-<div class='highlight'><pre><code class='java'>  
-<span class='kn'>import</span> <span class='nn'>com.opensymphony.xwork2.ActionInvocation</span><span class='o'>;</span>
-<span class='kn'>import</span> <span class='nn'>com.opensymphony.xwork2.interceptor.MethodFilterInterceptor</span><span class='o'>;</span>
-
-<span class='kd'>public</span> <span class='kd'>class</span> <span class='nc'>LoginInterceptor</span> <span class='kd'>extends</span> <span class='n'>MethodFilterInterceptor</span><span class='o'>{</span>
-
-	<span class='kd'>private</span> <span class='kd'>static</span> <span class='kd'>final</span> <span class='kt'>long</span> <span class='n'>serialVersionUID</span> <span class='o'>=</span> <span class='mi'>1L</span><span class='o'>;</span>
-
-	<span class='nd'>@Override</span>
-	<span class='kd'>protected</span> <span class='n'>String</span> <span class='nf'>doIntercept</span><span class='o'>(</span><span class='n'>ActionInvocation</span> <span class='n'>invocation</span><span class='o'>)</span> <span class='kd'>throws</span> <span class='n'>Exception</span> <span class='o'>{</span>
-		<span class='k'>return</span> <span class='kc'>null</span><span class='o'>;</span>
-	<span class='o'>}</span>
-
-<span class='o'>}</span>
-</code></pre>
-</div>
-<p>方法拦截器中核心方法就是<strong>doIntercept</strong>方法，在该方法中去实现拦截器的业务逻辑代码。方法拦截器需要在使用时通过配置文件来实现哪些方法拦截哪些方法不拦截。</p>
-<div class='highlight'><pre><code class='xml'><span class='nt'>&lt;interceptor-ref</span> <span class='na'>name=</span><span class='s'>&quot;loginInterceptor&quot;</span><span class='nt'>&gt;</span>
-	<span class='nt'>&lt;param</span> <span class='na'>name=</span><span class='s'>&quot;excludeMethods&quot;</span><span class='nt'>&gt;</span>execute<span class='nt'>&lt;/param&gt;</span>
-	<span class='nt'>&lt;param</span> <span class='na'>name=</span><span class='s'>&quot;includeMethods&quot;</span><span class='nt'>&gt;</span>login<span class='nt'>&lt;/param&gt;</span>
-<span class='nt'>&lt;/interceptor-ref&gt;</span>
-</code></pre>
-</div>
-<p><strong>excludeMethods</strong>属性用来声明哪些方法不被拦截，<strong>includeMethod</strong>属性用来声明哪些方法被拦截，多个方法之间使用英文的逗号进行分割。</p>
-
-<h3 id='id98'>拦截器的配置</h3>
-<div class='highlight'><pre><code class='xml'><span class='nt'>&lt;package</span> <span class='na'>name=</span><span class='s'>&quot;mystruts&quot;</span> <span class='na'>extends=</span><span class='s'>&quot;struts-default&quot;</span><span class='nt'>&gt;</span>
-	<span class='nt'>&lt;interceptors&gt;</span>
-		<span class='nt'>&lt;interceptor</span> <span class='na'>name=</span><span class='s'>&quot;loginInterceptor&quot;</span> <span class='na'>class=</span><span class='s'>&quot;com.kaishengit.web.interceptor.LoginInteceptor&quot;</span><span class='nt'>/&gt;</span>
-	<span class='nt'>&lt;/interceptors&gt;</span>
-		...
-<span class='nt'>&lt;/package&gt;</span>
-</code></pre>
-</div>
-<h3 id='id99'>拦截器使用</h3>
-
-<ul>
-<li>在指定的Action中使用</li>
-</ul>
-<div class='highlight'><pre><code class='xml'><span class='nt'>&lt;action</span> <span class='na'>name=</span><span class='s'>&quot;login&quot;</span> <span class='na'>class=</span><span class='s'>&quot;com.kaishengit.web.LoginAction&quot;</span> <span class='na'>method=</span><span class='s'>&quot;login&quot;</span><span class='nt'>&gt;</span>
-	<span class='nt'>&lt;result&gt;</span>suc.jsp<span class='nt'>&lt;/result&gt;</span>
-	<span class='nt'>&lt;interceptor-ref</span> <span class='na'>name=</span><span class='s'>&quot;loginInterceptor&quot;</span><span class='nt'>/&gt;</span>
-<span class='nt'>&lt;/action&gt;</span>
-</code></pre>
-</div>
-<p>当Action中配置拦截器后，<strong>package中</strong>默认的<strong>defaultStack</strong>拦截器栈将无法使用，所以必须在引入自定义拦截器的同时也将默认<strong>defaultStack</strong>引入到Action中，正确做法如下：</p>
-<div class='highlight'><pre><code class='xml'><span class='nt'>&lt;action</span> <span class='na'>name=</span><span class='s'>&quot;login&quot;</span> <span class='na'>class=</span><span class='s'>&quot;com.kaishengit.web.LoginAction&quot;</span> <span class='na'>method=</span><span class='s'>&quot;login&quot;</span><span class='nt'>&gt;</span>
-	<span class='nt'>&lt;result&gt;</span>suc.jsp<span class='nt'>&lt;/result&gt;</span>
-	<span class='nt'>&lt;interceptor-ref</span> <span class='na'>name=</span><span class='s'>&quot;loginInterceptor&quot;</span><span class='nt'>/&gt;</span>
-	<span class='nt'>&lt;interceptor-ref</span> <span class='na'>name=</span><span class='s'>&quot;defaultStack&quot;</span><span class='nt'>/&gt;</span>
-<span class='nt'>&lt;/action&gt;</span>
-</code></pre>
-</div>
-<ul>
-<li>在package中所有的Action中去使用 在每个Action中引入拦截器是个很啰嗦的事，所以可以通过更改<strong>package</strong>默认拦截器的方式来让每个Action都应用到。</li>
-</ul>
-<div class='highlight'><pre><code class='xml'><span class='nt'>&lt;package</span> <span class='na'>name=</span><span class='s'>&quot;mystruts&quot;</span> <span class='na'>extends=</span><span class='s'>&quot;struts-default&quot;</span><span class='nt'>&gt;</span>
-	<span class='nt'>&lt;interceptors&gt;</span>
-		<span class='nt'>&lt;interceptor</span> <span class='na'>name=</span><span class='s'>&quot;loginInterceptor&quot;</span> <span class='na'>class=</span><span class='s'>&quot;com.kaishengit.web.interceptor.LoginInteceptor&quot;</span><span class='nt'>/&gt;</span>
-		<span class='nt'>&lt;interceptor-stack</span> <span class='na'>name=</span><span class='s'>&quot;mystrack&quot;</span><span class='nt'>&gt;</span>
-			<span class='nt'>&lt;interceptor-ref</span> <span class='na'>name=</span><span class='s'>&quot;loginInterceptor&quot;</span><span class='nt'>/&gt;</span>
-			<span class='nt'>&lt;interceptor-ref</span> <span class='na'>name=</span><span class='s'>&quot;defaultStrack&quot;</span><span class='nt'>/&gt;</span>
-		<span class='nt'>&lt;/interceptor-stack&gt;</span>
-	<span class='nt'>&lt;/interceptors&gt;</span>
-	<span class='nt'>&lt;default-interceptor-ref</span> <span class='na'>name=</span><span class='s'>&quot;mystrack&quot;</span><span class='nt'>/&gt;</span>
-	…
-<span class='nt'>&lt;/package&gt;</span>
-</code></pre>
-</div>
-<h3 id='id100'>拦截器实例</h3>
-
-<h5 id='timer'>自定义Timer拦截器</h5>
-<div class='highlight'><pre><code class='java'><span class='kd'>public</span> <span class='kd'>class</span> <span class='nc'>MyTimerInterceptor</span> <span class='kd'>extends</span> <span class='n'>AbstractInterceptor</span><span class='o'>{</span>
-
-	<span class='kd'>private</span> <span class='kd'>static</span> <span class='kd'>final</span> <span class='kt'>long</span> <span class='n'>serialVersionUID</span> <span class='o'>=</span> <span class='mi'>1L</span><span class='o'>;</span>
-
-	<span class='nd'>@Override</span>
-	<span class='kd'>public</span> <span class='n'>String</span> <span class='nf'>intercept</span><span class='o'>(</span><span class='n'>ActionInvocation</span> <span class='n'>invocation</span><span class='o'>)</span> <span class='kd'>throws</span> <span class='n'>Exception</span> <span class='o'>{</span>
-		<span class='c1'>//获取开始时间</span>
-		<span class='kt'>long</span> <span class='n'>startTime</span> <span class='o'>=</span> <span class='n'>System</span><span class='o'>.</span><span class='na'>currentTimeMillis</span><span class='o'>();</span>
-		<span class='n'>String</span> <span class='n'>result</span> <span class='o'>=</span> <span class='n'>invocation</span><span class='o'>.</span><span class='na'>invoke</span><span class='o'>();</span>
-		<span class='c1'>//计算耗时</span>
-		<span class='kt'>long</span> <span class='n'>time</span> <span class='o'>=</span> <span class='n'>System</span><span class='o'>.</span><span class='na'>currentTimeMillis</span><span class='o'>()</span> <span class='o'>-</span> <span class='n'>startTime</span><span class='o'>;</span>
-		
-		<span class='c1'>//获取当前拦截的Action在struts.xml中配置的name名称</span>
-		<span class='n'>String</span> <span class='n'>actionName</span> <span class='o'>=</span> <span class='n'>invocation</span><span class='o'>.</span><span class='na'>getProxy</span><span class='o'>().</span><span class='na'>getActionName</span><span class='o'>();</span>
-		<span class='c1'>//获取当前拦截的Action所执行的方法</span>
-		<span class='n'>String</span> <span class='n'>method</span> <span class='o'>=</span> <span class='n'>invocation</span><span class='o'>.</span><span class='na'>getProxy</span><span class='o'>().</span><span class='na'>getMethod</span><span class='o'>();</span>
-		
-		<span class='n'>StringBuilder</span> <span class='n'>msg</span> <span class='o'>=</span> <span class='k'>new</span> <span class='n'>StringBuilder</span><span class='o'>();</span>
-		<span class='n'>msg</span><span class='o'>.</span><span class='na'>append</span><span class='o'>(</span><span class='n'>actionName</span><span class='o'>).</span><span class='na'>append</span><span class='o'>(</span><span class='s'>&quot;!&quot;</span><span class='o'>)</span>
-			<span class='o'>.</span><span class='na'>append</span><span class='o'>(</span><span class='n'>method</span><span class='o'>).</span><span class='na'>append</span><span class='o'>(</span><span class='s'>&quot;执行耗时：&quot;</span><span class='o'>)</span>
-			<span class='o'>.</span><span class='na'>append</span><span class='o'>(</span><span class='n'>time</span><span class='o'>).</span><span class='na'>append</span><span class='o'>(</span><span class='s'>&quot;ms&quot;</span><span class='o'>);</span>
-		<span class='n'>System</span><span class='o'>.</span><span class='na'>out</span><span class='o'>.</span><span class='na'>println</span><span class='o'>(</span><span class='n'>msg</span><span class='o'>);</span>
-		<span class='k'>return</span> <span class='n'>result</span><span class='o'>;</span>
-	<span class='o'>}</span>
-
-<span class='o'>}</span>
-</code></pre>
-</div>
-<h6 id='id101'>登录验证拦截器</h6>
-<div class='highlight'><pre><code class='java'><span class='kd'>public</span> <span class='kd'>class</span> <span class='nc'>LoginInterceptor</span> <span class='kd'>extends</span> <span class='n'>AbstractInterceptor</span><span class='o'>{</span>
-
-	<span class='kd'>private</span> <span class='kd'>static</span> <span class='kd'>final</span> <span class='kt'>long</span> <span class='n'>serialVersionUID</span> <span class='o'>=</span> <span class='mi'>1L</span><span class='o'>;</span>
-
-	<span class='kd'>private</span> <span class='n'>Set</span><span class='o'>&lt;</span><span class='n'>String</span><span class='o'>&gt;</span> <span class='n'>excludeActionSet</span><span class='o'>;</span>
-	
-	<span class='nd'>@Override</span>
-	<span class='kd'>public</span> <span class='n'>String</span> <span class='nf'>intercept</span><span class='o'>(</span><span class='n'>ActionInvocation</span> <span class='n'>invocation</span><span class='o'>)</span> <span class='kd'>throws</span> <span class='n'>Exception</span> <span class='o'>{</span>
-		<span class='c1'>//获取当前执行的Action的name</span>
-		<span class='n'>String</span> <span class='n'>name</span> <span class='o'>=</span> <span class='n'>invocation</span><span class='o'>.</span><span class='na'>getProxy</span><span class='o'>().</span><span class='na'>getActionName</span><span class='o'>();</span>
-
-		<span class='k'>if</span><span class='o'>(</span><span class='n'>excludeActionSet</span><span class='o'>.</span><span class='na'>contains</span><span class='o'>(</span><span class='n'>name</span><span class='o'>))</span> <span class='o'>{</span>
-			<span class='c1'>//如果不属于拦截的Action，直接放行</span>
-			<span class='k'>return</span> <span class='n'>invocation</span><span class='o'>.</span><span class='na'>invoke</span><span class='o'>();</span>
-		<span class='o'>}</span> <span class='k'>else</span> <span class='o'>{</span>
-			<span class='c1'>//属于拦截的Action，检查Session中是否有User对象</span>
-			<span class='n'>Map</span><span class='o'>&lt;</span><span class='n'>String</span><span class='o'>,</span><span class='n'>Object</span><span class='o'>&gt;</span> <span class='n'>session</span> <span class='o'>=</span> <span class='n'>invocation</span><span class='o'>.</span><span class='na'>getInvocationContext</span><span class='o'>().</span><span class='na'>getContext</span><span class='o'>().</span><span class='na'>getSession</span><span class='o'>();</span>
-			<span class='n'>User</span> <span class='n'>user</span> <span class='o'>=</span> <span class='o'>(</span><span class='n'>User</span><span class='o'>)</span> <span class='n'>session</span><span class='o'>.</span><span class='na'>get</span><span class='o'>(</span><span class='s'>&quot;session_in_user&quot;</span><span class='o'>);</span>
-			<span class='k'>if</span><span class='o'>(</span><span class='n'>user</span> <span class='o'>==</span> <span class='kc'>null</span><span class='o'>)</span> <span class='o'>{</span>
-				<span class='k'>return</span> <span class='n'>Action</span><span class='o'>.</span><span class='na'>LOGIN</span><span class='o'>;</span>
-			<span class='o'>}</span> <span class='k'>else</span> <span class='o'>{</span>
-				<span class='k'>return</span> <span class='n'>invocation</span><span class='o'>.</span><span class='na'>invoke</span><span class='o'>();</span>
-			<span class='o'>}</span>
-		<span class='o'>}</span>
-	<span class='o'>}</span>
-	<span class='cm'>/**</span>
-<span class='cm'>	 * 该方法由struts2自动调用，用来配置哪些Action不被该拦截器拦截</span>
-<span class='cm'>	 * @param excludeActions</span>
-<span class='cm'>	 */</span>
-	<span class='kd'>public</span> <span class='kt'>void</span> <span class='nf'>setExcludeActions</span><span class='o'>(</span><span class='n'>String</span> <span class='n'>excludeActions</span><span class='o'>)</span> <span class='o'>{</span>
-		<span class='c1'>//将一个字符串根据逗号分割，返回set集合</span>
-		<span class='n'>excludeActionSet</span> <span class='o'>=</span> <span class='n'>TextParseUtil</span><span class='o'>.</span><span class='na'>commaDelimitedStringToSet</span><span class='o'>(</span><span class='n'>excludeActions</span><span class='o'>);</span>
-	<span class='o'>}</span>
-
-<span class='o'>}</span>
-</code></pre>
-</div>
-<p>使用方式</p>
-<div class='highlight'><pre><code class='xml'><span class='nt'>&lt;interceptors&gt;</span>
-	<span class='nt'>&lt;interceptor</span> <span class='na'>name=</span><span class='s'>&quot;loginInterceptor&quot;</span> <span class='na'>class=</span><span class='s'>&quot;com.kaishengit.web.interceptor.LoginInteceptor&quot;</span><span class='nt'>/&gt;</span>
-	
-	<span class='nt'>&lt;interceptor-stack</span> <span class='na'>name=</span><span class='s'>&quot;mystrack&quot;</span><span class='nt'>&gt;</span>
-		<span class='nt'>&lt;interceptor-ref</span> <span class='na'>name=</span><span class='s'>&quot;loginInterceptor&quot;</span><span class='nt'>&gt;</span>
-			<span class='c'>&lt;!-- 配置名称为index和login的Action不被拦截 --&gt;</span>
-			<span class='nt'>&lt;param</span> <span class='na'>name=</span><span class='s'>&quot;excludeActions&quot;</span><span class='nt'>&gt;</span>index,login<span class='nt'>&lt;/param&gt;</span>
-		<span class='nt'>&lt;/interceptor-ref&gt;</span>
-		<span class='nt'>&lt;interceptor-ref</span> <span class='na'>name=</span><span class='s'>&quot;defaultStrack&quot;</span><span class='nt'>/&gt;</span>
-	<span class='nt'>&lt;/interceptor-stack&gt;</span>
-<span class='nt'>&lt;/interceptors&gt;</span>
-</code></pre>
-</div>
-<h2 id='id102'>其他</h2>
-
-<ul>
-<li>获取拦截的Action的完全限定名</li>
-</ul>
-<div class='highlight'><pre><code class='java'><span class='n'>invocation</span><span class='o'>.</span><span class='na'>getAction</span><span class='o'>().</span><span class='na'>getClass</span><span class='o'>().</span><span class='na'>getName</span><span class='o'>()</span><span class='err'>；</span>
-</code></pre>
-</div>]]></content:encoded>
     </item>
     
   </channel>
