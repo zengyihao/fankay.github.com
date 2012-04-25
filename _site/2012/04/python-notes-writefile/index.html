@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="樊凯" />
+    <title>Python学习笔记(四):写文件 | 樊凯</title>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link href="/feed/" rel="alternate" title="樊凯" type="application/atom+xml" />
+    <link rel="stylesheet" href="/media/css/style.css">
+    <link rel="stylesheet" href="/media/css/highlight.css">
+    <script type="text/javascript" src="/media/js/jquery-1.7.1.min.js"></script>
+  </head>
+  <body>
+    <div id="container">
+      <div id="main" role="main">
+        <header>
+        <h1>Python学习笔记(四):写文件</h1>
+        </header>
+        <nav>
+        <span><a title="home page" class="" href="/">Home</a></span>
+        <span><a title="about" class="" href="/about/">About</a></span>
+        <span><a title="guestbook" class="" href="/guestbook/">Guestbook</a></span>
+        <span><a title="categories" class="" href="/categories/">Categories</a></span>
+        <span><a title="tags" class="" href="/tags/">Tags</a></span>
+        <span><a title="links" class="" href="/links/">Links</a></span>
+        <span><a title="subscribe by RSS" class="" href="/feed/">Subscribe</a></span>
+        </nav>
+        <article class="content">
+        <section class="post">
+<p><img alt='Python' src='http://www.python.org/images/python-logo.gif' /></p>
+
+<h4 id='id19'>以写模式打开文件</h4>
+<div class='highlight'><pre><code class='python'><span class='n'>my_file</span> <span class='o'>=</span> <span class='nb'>open</span><span class='p'>(</span><span class='s'>&quot;data.txt&quot;</span><span class='p'>,</span><span class='s'>&quot;w&quot;</span><span class='p'>)</span>
+</code></pre>
+</div>
+<p><em>open()</em>函数的第二个参数是打开文件的模式，常见模式如下：</p>
+
+<ul>
+<li>w:写模式，该模式下，如果文件中有内容，则会把原有内容清空再写入新的数据</li>
+
+<li>a:追加模式，该模式下，新的数据会加入到原有文件的内容中，而不会清空原有的数据</li>
+
+<li>w+:读写模式，该模式下，文件可以进行读操作和写操作，而且不会清空原有数据</li>
+</ul>
+
+<p>注意<strong>如果写的文件在磁盘中不存在，则会先创建该文件再进行写操作</strong> 默认地，<em>print()</em>函数会将内容输出到屏幕中，如果希望将内容写到文件中则需要通过<em>file</em>参数来指定所使用的文件对象：</p>
+<div class='highlight'><pre><code class='python'><span class='n'>my_file</span> <span class='o'>=</span> <span class='nb'>open</span><span class='p'>(</span><span class='s'>&quot;data.txt&quot;</span><span class='p'>,</span><span class='s'>&quot;w&quot;</span><span class='p'>)</span>
+<span class='k'>print</span><span class='p'>(</span><span class='s'>&quot;Hi,this is python&quot;</span><span class='p'>,</span><span class='nb'>file</span> <span class='o'>=</span> <span class='n'>my_file</span><span class='p'>)</span>
+<span class='n'>my_file</span><span class='o'>.</span><span class='n'>close</span><span class='p'>()</span>
+</code></pre>
+</div>
+<p>完成操作时，务必要调用<em>close()</em>函数来关闭文件对象。</p>
+
+<h4 id='id20'>异常异常！</h4>
+
+<p>如果在写文件时，磁盘已满或者路径不存在，则会引发<strong>IOError</strong>异常，所以在进行写操作时也要进行<strong>try…except…</strong>方式的来捕获异常：</p>
+<div class='highlight'><pre><code class='python'><span class='k'>try</span> <span class='p'>:</span>
+	<span class='n'>my_file</span> <span class='o'>=</span> <span class='nb'>open</span><span class='p'>(</span><span class='s'>&quot;data.txt&quot;</span><span class='p'>,</span><span class='s'>&quot;w&quot;</span><span class='p'>)</span>
+	<span class='n'>my_file2</span> <span class='o'>=</span> <span class='nb'>open</span><span class='p'>(</span><span class='s'>&quot;file.txt&quot;</span><span class='p'>,</span><span class='s'>&quot;w&quot;</span><span class='p'>)</span>
+	
+	<span class='k'>print</span><span class='p'>(</span><span class='s'>&quot;Hi,this is python&quot;</span><span class='p'>,</span><span class='nb'>file</span> <span class='o'>=</span> <span class='n'>my_file</span><span class='p'>)</span>
+	<span class='k'>print</span><span class='p'>(</span><span class='s'>&quot;xixi&quot;</span><span class='p'>,</span><span class='nb'>file</span> <span class='o'>=</span> <span class='n'>myfile2</span><span class='p'>)</span>
+	
+	<span class='n'>my_file</span><span class='o'>.</span><span class='n'>close</span><span class='p'>()</span>
+	<span class='n'>my_file2</span><span class='o'>.</span><span class='n'>close</span><span class='p'>()</span>
+<span class='k'>except</span> <span class='ne'>IOError</span> <span class='p'>:</span>
+	<span class='k'>print</span><span class='p'>(</span><span class='s'>&quot;IOError&quot;</span><span class='p'>)</span>
+</code></pre>
+</div>
+<p>在上面的示例代码中如果my_file2在打开时出现了异常那么就会导致程序直接跳转到except代码块中去执行，这样引起的后果就是文件的<em>close()</em>方法没有办法执行了。我们希望的结果是，无论是否出现异常，文件都要安全的关闭，所以Python中也有类似Java中的<strong>finally</strong>代码块：</p>
+<div class='highlight'><pre><code class='python'><span class='k'>try</span> <span class='p'>:</span>
+	<span class='n'>my_file</span> <span class='o'>=</span> <span class='nb'>open</span><span class='p'>(</span><span class='s'>&quot;data.txt&quot;</span><span class='p'>,</span><span class='s'>&quot;w&quot;</span><span class='p'>)</span>
+	<span class='n'>my_file2</span> <span class='o'>=</span> <span class='nb'>open</span><span class='p'>(</span><span class='s'>&quot;file.txt&quot;</span><span class='p'>,</span><span class='s'>&quot;w&quot;</span><span class='p'>)</span>
+	
+	<span class='k'>print</span><span class='p'>(</span><span class='s'>&quot;Hi,this is python&quot;</span><span class='p'>,</span><span class='nb'>file</span> <span class='o'>=</span> <span class='n'>my_file</span><span class='p'>)</span>
+	<span class='k'>print</span><span class='p'>(</span><span class='s'>&quot;xixi&quot;</span><span class='p'>,</span><span class='nb'>file</span> <span class='o'>=</span> <span class='n'>myfile2</span><span class='p'>)</span>
+<span class='k'>except</span> <span class='ne'>IOError</span> <span class='p'>:</span>
+	<span class='k'>print</span><span class='p'>(</span><span class='s'>&quot;IOError&quot;</span><span class='p'>)</span>
+<span class='k'>finally</span> <span class='p'>:</span>
+	<span class='n'>my_file</span><span class='o'>.</span><span class='n'>close</span><span class='p'>()</span>
+	<span class='n'>my_file2</span><span class='o'>.</span><span class='n'>close</span><span class='p'>()</span>
+</code></pre>
+</div>
+<p>在仔细想想，如果my_file2打开时异常，那么就根本无法创建my_file2对象，那么在<strong>finally</strong>代码块中调用myfile2的<em>close()</em>函数时会引发<strong>NameError</strong>，所以在关闭时需要判断文件对象是否存在，如果存在，则调用<em>close()</em>函数进行关闭。Python内置的函数<em>locals()</em>会返回当前作用域中定义的所有变量的集合，所以我们需要判断变量是否存在<em>locals()</em>函数返回的集合中即可：</p>
+<div class='highlight'><pre><code class='python'><span class='k'>try</span> <span class='p'>:</span>
+	<span class='n'>my_file</span> <span class='o'>=</span> <span class='nb'>open</span><span class='p'>(</span><span class='s'>&quot;data.txt&quot;</span><span class='p'>,</span><span class='s'>&quot;w&quot;</span><span class='p'>)</span>
+	<span class='n'>my_file2</span> <span class='o'>=</span> <span class='nb'>open</span><span class='p'>(</span><span class='s'>&quot;file.txt&quot;</span><span class='p'>,</span><span class='s'>&quot;w&quot;</span><span class='p'>)</span>
+	
+	<span class='k'>print</span><span class='p'>(</span><span class='s'>&quot;Hi,this is python&quot;</span><span class='p'>,</span><span class='nb'>file</span> <span class='o'>=</span> <span class='n'>my_file</span><span class='p'>)</span>
+	<span class='k'>print</span><span class='p'>(</span><span class='s'>&quot;xixi&quot;</span><span class='p'>,</span><span class='nb'>file</span> <span class='o'>=</span> <span class='n'>myfile2</span><span class='p'>)</span>
+<span class='k'>except</span> <span class='ne'>IOError</span> <span class='p'>:</span>
+	<span class='k'>print</span><span class='p'>(</span><span class='s'>&quot;IOError&quot;</span><span class='p'>)</span>
+<span class='k'>finally</span> <span class='p'>:</span>
+	<span class='k'>if</span> <span class='n'>my_file</span> <span class='ow'>in</span> <span class='nb'>locals</span><span class='p'>()</span> <span class='p'>:</span>
+		<span class='n'>my_file</span><span class='o'>.</span><span class='n'>close</span><span class='p'>()</span>
+	<span class='k'>if</span> <span class='n'>my_file2</span> <span class='ow'>in</span> <span class='nb'>locals</span><span class='p'>()</span> <span class='p'>:</span>
+		<span class='n'>my_file2</span><span class='o'>.</span><span class='n'>close</span><span class='p'>()</span>
+</code></pre>
+</div>
+<h5 id='id21'>获取异常信息</h5>
+
+<p>当出现异常时，代码会跳转到<strong>except</strong>代码块中，但是无法获取错误的详细信息。例如在上面的写文件的代码中，如果<em>open()</em>函数调用出现异常，那么是因为磁盘已满？还是没有文件的写入权限(只读文件)? 所以，我们不仅仅需要知道错误的类型，还需要知道错误的详细内容：</p>
+<div class='highlight'><pre><code class='python'><span class='k'>try</span> <span class='p'>:</span>
+	<span class='n'>my_file</span> <span class='o'>=</span> <span class='nb'>open</span><span class='p'>(</span><span class='s'>&quot;data.txt&quot;</span><span class='p'>,</span><span class='s'>&quot;w&quot;</span><span class='p'>)</span>
+	<span class='n'>my_file2</span> <span class='o'>=</span> <span class='nb'>open</span><span class='p'>(</span><span class='s'>&quot;file.txt&quot;</span><span class='p'>,</span><span class='s'>&quot;w&quot;</span><span class='p'>)</span>
+	
+	<span class='k'>print</span><span class='p'>(</span><span class='s'>&quot;Hi,this is python&quot;</span><span class='p'>,</span><span class='nb'>file</span> <span class='o'>=</span> <span class='n'>my_file</span><span class='p'>)</span>
+	<span class='k'>print</span><span class='p'>(</span><span class='s'>&quot;xixi&quot;</span><span class='p'>,</span><span class='nb'>file</span> <span class='o'>=</span> <span class='n'>myfile2</span><span class='p'>)</span>
+<span class='k'>except</span> <span class='ne'>IOError</span> <span class='k'>as</span> <span class='n'>err</span> <span class='p'>:</span>
+	<span class='k'>print</span><span class='p'>(</span><span class='s'>&quot;IOError:&quot;</span> <span class='o'>+</span> <span class='nb'>str</span><span class='p'>(</span><span class='n'>err</span><span class='p'>))</span>
+<span class='k'>finally</span> <span class='p'>:</span>
+	<span class='k'>if</span> <span class='n'>my_file</span> <span class='ow'>in</span> <span class='nb'>locals</span><span class='p'>()</span> <span class='p'>:</span>
+		<span class='n'>my_file</span><span class='o'>.</span><span class='n'>close</span><span class='p'>()</span>
+	<span class='k'>if</span> <span class='n'>my_file2</span> <span class='ow'>in</span> <span class='nb'>locals</span><span class='p'>()</span> <span class='p'>:</span>
+		<span class='n'>my_file2</span><span class='o'>.</span><span class='n'>close</span><span class='p'>()</span>
+</code></pre>
+</div>
+<p>注意上面示例代码中的<strong>except</strong>部分，将异常的对象给了变量err，然后在显示错误信息时，将err的内容进行输出。<em>str()</em>函数用于将其他类型的数据转换为字符串类型。</p>
+
+<h4 id='id22'>更简单的文件处理方式</h4>
+
+<p>对于文件操作时，<strong>try…except…finally</strong>的方式非常的常用，但是不够简洁，Python中提供了<em>with… as…</em>语法来简化这样的操作:</p>
+<div class='highlight'><pre><code class='python'><span class='k'>try</span> <span class='p'>:</span> 
+	<span class='k'>with</span> <span class='nb'>open</span><span class='p'>(</span><span class='s'>&quot;data.txt&quot;</span><span class='p'>,</span><span class='s'>&quot;w&quot;</span><span class='p'>)</span> <span class='k'>as</span> <span class='n'>my_file</span> <span class='p'>:</span>
+		<span class='k'>print</span><span class='p'>(</span><span class='s'>&quot;Hi,this is python&quot;</span><span class='p'>,</span><span class='nb'>file</span> <span class='o'>=</span> <span class='n'>my_file</span><span class='p'>)</span>
+	<span class='k'>with</span> <span class='nb'>open</span><span class='p'>(</span><span class='s'>&quot;file.txt&quot;</span><span class='p'>,</span><span class='s'>&quot;w&quot;</span><span class='p'>)</span> <span class='k'>as</span> <span class='n'>my_file2</span> <span class='p'>:</span>
+		<span class='k'>print</span><span class='p'>(</span><span class='s'>&quot;xixi&quot;</span><span class='p'>,</span><span class='nb'>file</span> <span class='o'>=</span> <span class='n'>myfile2</span><span class='p'>)</span>
+<span class='k'>except</span> <span class='ne'>IOError</span> <span class='k'>as</span> <span class='n'>err</span> <span class='p'>:</span>
+	<span class='k'>print</span><span class='p'>(</span><span class='s'>&quot;IOError:&quot;</span> <span class='o'>+</span> <span class='nb'>str</span><span class='p'>(</span><span class='n'>err</span><span class='p'>))</span>
+</code></pre>
+</div>
+<p>使用<strong>with</strong>语法进行操作时，不需要关心文件的关闭，因为Python会自动为我们做这些。上面的代码还可以简化如下：</p>
+<div class='highlight'><pre><code class='python'><span class='k'>try</span> <span class='p'>:</span> 
+	<span class='k'>with</span> <span class='nb'>open</span><span class='p'>(</span><span class='s'>&quot;data.txt&quot;</span><span class='p'>,</span><span class='s'>&quot;w&quot;</span><span class='p'>)</span> <span class='k'>as</span> <span class='n'>my_file</span><span class='p'>,</span><span class='nb'>open</span><span class='p'>(</span><span class='s'>&quot;file.txt&quot;</span><span class='p'>,</span><span class='s'>&quot;w&quot;</span><span class='p'>)</span> <span class='k'>as</span> <span class='n'>my_file2</span> <span class='p'>:</span>
+		<span class='k'>print</span><span class='p'>(</span><span class='s'>&quot;Hi,this is python&quot;</span><span class='p'>,</span><span class='nb'>file</span> <span class='o'>=</span> <span class='n'>my_file</span><span class='p'>)</span>
+		<span class='k'>print</span><span class='p'>(</span><span class='s'>&quot;xixi&quot;</span><span class='p'>,</span><span class='nb'>file</span> <span class='o'>=</span> <span class='n'>myfile2</span><span class='p'>)</span>
+<span class='k'>except</span> <span class='ne'>IOError</span> <span class='k'>as</span> <span class='n'>err</span> <span class='p'>:</span>
+	<span class='k'>print</span><span class='p'>(</span><span class='s'>&quot;IOError:&quot;</span> <span class='o'>+</span> <span class='nb'>str</span><span class='p'>(</span><span class='n'>err</span><span class='p'>))</span>
+</code></pre>
+</div>
+<h4 id='id23'>以二进制方式来读写数据</h4>
+
+<p>Python中提供了<em>pickle</em>模块来对文件进行二进制的操作，例如<strong>dump()</strong>函数用于将文本以二进制的方式存储在文件中。<strong>load()</strong>函数用于将二进制文件读取到Python中。</p>
+<div class='highlight'><pre><code class='python'><span class='kn'>import</span> <span class='nn'>pickle</span>
+
+<span class='k'>try</span><span class='p'>:</span>
+	<span class='k'>with</span> <span class='nb'>open</span><span class='p'>(</span><span class='s'>&quot;myfile.dat&quot;</span><span class='p'>,</span><span class='s'>&quot;wb&quot;</span><span class='p'>)</span> <span class='k'>as</span> <span class='n'>myfile</span> <span class='p'>:</span>
+		<span class='n'>pickle</span><span class='o'>.</span><span class='n'>dump</span><span class='p'>(</span><span class='s'>&quot;Hi,this is a Python&quot;</span><span class='p'>,</span><span class='n'>myfile</span><span class='p'>)</span>
+<span class='k'>except</span> <span class='n'>PickleError</span> <span class='k'>as</span> <span class='n'>err</span><span class='p'>:</span>
+	<span class='k'>print</span><span class='p'>(</span><span class='s'>&quot;error:&quot;</span> <span class='o'>+</span> <span class='nb'>str</span><span class='p'>(</span><span class='n'>err</span><span class='p'>))</span>
+</code></pre>
+</div>
+<p>上面的代码中用到了<em>pickle</em>模块，所以我们需要使用关键字<em>import</em>将其导入到我们的代码中。<em>wb</em>模式代表以二进制的形式进行写操作。读取二进制文件示例如下：</p>
+<div class='highlight'><pre><code class='python'><span class='kn'>import</span> <span class='nn'>pickle</span>
+
+<span class='k'>try</span><span class='p'>:</span>
+	<span class='k'>with</span> <span class='nb'>open</span><span class='p'>(</span><span class='s'>&quot;myfile.dat&quot;</span><span class='p'>,</span><span class='s'>&quot;rb&quot;</span><span class='p'>)</span> <span class='k'>as</span> <span class='n'>myfile</span> <span class='p'>:</span>
+		<span class='n'>content</span> <span class='o'>=</span> <span class='n'>pickle</span><span class='o'>.</span><span class='n'>load</span><span class='p'>(</span><span class='n'>myfile</span><span class='p'>);</span>
+	<span class='k'>print</span><span class='p'>(</span><span class='n'>content</span><span class='p'>)</span>
+<span class='k'>except</span> <span class='n'>PickleError</span> <span class='k'>as</span> <span class='n'>err</span> <span class='p'>:</span>
+	<span class='k'>print</span><span class='p'>(</span><span class='s'>&quot;error:&quot;</span> <span class='o'>+</span> <span class='nb'>str</span><span class='p'>(</span><span class='n'>err</span><span class='p'>))</span>
+</code></pre>
+</div>
+<p><em>rb</em>代表以二进制模式来读取文件。</p>
+</section>
+<section class="meta">
+<span class="author">
+  <a href="http://fankai.me">樊凯</a>
+</span>
+<span class="time">
+  /
+  <time datetime="2012-04-22">2012-04-22</time>
+</span>
+<br />
+<span class="license">
+  Published under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">(CC) BY-NC-SA</a>
+</span>
+
+<span class="categories">
+  in categories
+  
+  <a href="/categories/#Python" title="Python">Python</a>&nbsp;
+  
+</span>
+
+
+<span class="tags">
+  tagged with 
+  
+</span>
+
+</section>
+<section class="comment">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'fankaysblog'; // required: replace example with your forum shortname
+    var disqus_url = 'http://fankai.me/2012/04/python-notes-writefile/';
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+<script type="text/javascript">
+$(function(){
+  $(document).keydown(function(e) {
+    var url = false;
+        if (e.which == 37 || e.which == 74) {  // Left arrow and J
+            
+        url = 'http://fankai.me/2012/04/recommend/';
+        
+        }
+        else if (e.which == 39 || e.which == 75) {  // Right arrow and K
+            
+        }
+        if (url) {
+            window.location = url;
+        }
+  });
+})
+</script>
+
+
+        </article>
+      </div>
+
+    <footer>
+        <p><small>Powered by <a href="https://github.com/mojombo/jekyll">Jekyll</a> & <a href="http://pages.github.com">GitHub</a> | Copyright 2012 - 2012 by <a href="http://fankai.me">樊凯</a> | <a href="http://www.kaishengit.com">凯盛软件</a></small></p>
+    </footer>
+
+    </div>
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-30096094-1']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+  </body>
+</html>
