@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="樊凯" />
+    <title>使用Dropbox分享文件 | 樊凯</title>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link href="/feed/" rel="alternate" title="樊凯" type="application/atom+xml" />
+    <link rel="stylesheet" href="/media/css/style.css">
+    <link rel="stylesheet" href="/media/css/highlight.css">
+    <script type="text/javascript" src="/media/js/jquery-1.7.1.min.js"></script>
+  </head>
+  <body>
+    <div id="container">
+      <div id="main" role="main">
+        <header>
+        <h1>使用Dropbox分享文件</h1>
+        </header>
+        <nav>
+        <span><a title="home page" class="" href="/">Home</a></span>
+        <span><a title="about" class="" href="/about/">About</a></span>
+        <span><a title="guestbook" class="" href="/guestbook/">Guestbook</a></span>
+        <span><a title="categories" class="" href="/categories/">Categories</a></span>
+        <span><a title="tags" class="" href="/tags/">Tags</a></span>
+        <span><a title="links" class="" href="/links/">Links</a></span>
+        <span><a title="subscribe by RSS" class="" href="/feed/">Subscribe</a></span>
+        </nav>
+        <article class="content">
+        <section class="post">
+<p><a href='https://www.dropbox.com/referrals/NTUyNDE1Mzc3OQ?src=referrals_twitter9'>DropBox</a>中默认提供了一个名字叫做Public的文件夹，可以利用这个文件来分享这个文件，例如在个人博客中插入图片。</p>
+
+<p>现在在博客中插入图片要么利用博客的文件上传功能，要么利用第三方的图片网站，但是不少的图片网站对外链的政策是要么收费，要么禁止外链。当前在国内用的比较多的就是新浪微博提供的相册服务，至少当前新浪并没有禁止外链。例如你现在看到下面的这张图片就来自新浪微博的相册：</p>
+
+<p><img alt='新浪微博相册中的图片' src='http://ww4.sinaimg.cn/mw600/62772de6jw1drunc37pr3j.jpg' /></p>
+<!-- more -->
+<p>除了新浪微博的相册服务，还可以选择Dropbox的Public文件夹来做这样的服务，将一张图片放到Dropbox的Public文件夹中，然后右键该文件，可以获取到该文件的外链地址，格式为： <a href='http://dl.dropbox.com/u/52415377/it.png'>http://dl.dropbox.com/u/52415377/it.png</a>,不出意外的话你点击此超链接不会看到任何图片，因为GFW已经将Dropbox进行认证。那么如何搞定呢，方法有如下两种：</p>
+
+<h4 id='https'>使用https协议即可</h4>
+
+<p>将上面的图片连接由http改为https，<a href='https://dl.dropbox.com/u/52415377/it.png'>https://dl.dropbox.com/u/52415377/it.png</a>。下面的图片就来自我的Dropbox：<br /><img alt='Dropbox相片' src='https://dl.dropbox.com/u/52415377/it.png' /></p>
+
+<h5 id='cname'>使用自己域名的CNAME功能</h5>
+
+<p>在域名的控制面板中，添加一个CNAME，值为dl,将其指向dl.dropbox.com，例如配置我的域名为dl.fankai.me,这样就可以突破GFW，在不适用https协议的情况下来访问Dropbox中的图片。格式为<a href='http://dl.fankai.me/u/52415377/it.png'>http://dl.fankai.me/u/52415377/it.png</a>,其中52415377为你个人账号的ID，每人是不一样的，下面的图片来自CNAME后的显示： <img alt='CNAME后的图片' src='http://dl.fankai.me/u/52415377/it.png' /></p>
+
+<p>使用CNAME后如果在配上<a href='https://www.cloudflare.com'>https://www.cloudflare.com</a>的免费CDN服务，显示图片的速度将加快很多！</p>
+</section>
+<section class="meta">
+<span class="author">
+  <a href="http://fankai.me">樊凯</a>
+</span>
+<span class="time">
+  /
+  <time datetime="2012-04-10">2012-04-10</time>
+</span>
+<br />
+<span class="license">
+  Published under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">(CC) BY-NC-SA</a>
+</span>
+
+<span class="categories">
+  in categories
+  
+  <a href="/categories/#互联网" title="互联网">互联网</a>&nbsp;
+  
+</span>
+
+
+<span class="tags">
+  tagged with 
+  
+</span>
+
+</section>
+<section class="comment">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'fankaysblog'; // required: replace example with your forum shortname
+    var disqus_url = 'http://fankai.me/2012/04/dropbox-share-image/';
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+<script type="text/javascript">
+$(function(){
+  $(document).keydown(function(e) {
+    var url = false;
+        if (e.which == 37 || e.which == 74) {  // Left arrow and J
+            
+        url = 'http://fankai.me/2012/03/dev-book/';
+        
+        }
+        else if (e.which == 39 || e.which == 75) {  // Right arrow and K
+            
+        url = 'http://fankai.me/2012/04/use-gravator-in-java/';
+        
+        }
+        if (url) {
+            window.location = url;
+        }
+  });
+})
+</script>
+
+
+        </article>
+      </div>
+
+    <footer>
+        <p><small>Powered by <a href="https://github.com/mojombo/jekyll">Jekyll</a> & <a href="http://pages.github.com">GitHub</a> | Copyright 2012 - 2012 by <a href="http://fankai.me">樊凯</a> | <a href="http://www.kaishengit.com">凯盛软件</a></small></p>
+    </footer>
+
+    </div>
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-30096094-1']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+  </body>
+</html>

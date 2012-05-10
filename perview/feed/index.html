@@ -1,0 +1,594 @@
+<?xml version="1.0" encoding="utf-8"?>
+  <rss version="2.0"
+        xmlns:content="http://purl.org/rss/1.0/modules/content/"
+        xmlns:atom="http://www.w3.org/2005/Atom"
+  >
+  <channel>
+    <title>樊凯</title>
+    <link href="http://fankai.me/feed/" rel="self" />
+    <link href="http://fankai.me/" />
+    <lastBuildDate>2012-05-10T18:50:10+08:00</lastBuildDate>
+    <webMaster>fankai@kaishengit.com</webMaster>
+    
+    <item>
+      <title>关于Mac bash</title>
+      <link href="http://fankai.me/2012/05/macbash/"/>
+      <pubDate>2012-05-10T18:44:00+08:00</pubDate>
+      <author>樊凯</author>
+      <guid>http://fankai.me/2012/05/macbash</guid>
+      <content:encoded><![CDATA[<p>配置文件地址：<br /><strong>/etc/bashrc</strong></p>
+
+<p>其中PS1是bash前缀的声明，具体参数如下：</p>
+
+<ul>
+<li>\a ASCII 响铃字符（也可以键入 \007）</li>
+
+<li>\d &#8220;Wed Sep 06&#8221; 格式的日期</li>
+
+<li>\e ASCII 转义字符（也可以键入 \033）</li>
+
+<li>\h 主机名的第一部分（如 &#8220;mybox&#8221;）</li>
+
+<li>\H 主机的全称（如 &#8220;mybox.mydomain.com&#8221;）</li>
+
+<li>\j 在此 shell 中通过按 ^Z 挂起的进程数</li>
+
+<li>\l 此 shell 的终端设备名（如 &#8220;ttyp4&#8221;）</li>
+
+<li>\n 换行符</li>
+
+<li>\r 回车符</li>
+
+<li>\s shell 的名称（如 &#8220;bash&#8221;）</li>
+
+<li>\t 24 小时制时间（如 &#8220;23:01:01&#8221;）</li>
+
+<li>\T 12 小时制时间（如 &#8220;11:01:01&#8221;）</li>
+
+<li>\@ 带有 am/pm 的 12 小时制时间</li>
+
+<li>\u 用户名</li>
+
+<li>\v bash 的版本（如 2.04）</li>
+
+<li>\V Bash 版本（包括补丁级别） ?/td&gt;</li>
+
+<li>\w 当前工作目录（如 &#8220;/home/drobbins&#8221;）</li>
+
+<li>\W 当前工作目录的“基名 (basename)”（如 &#8220;drobbins&#8221;） + ! 当前命令在历史缓冲区中的位置 + # 命令编号（只要您键入内容，它就会在每次提示时累加）</li>
+
+<li>\$ 如果您不是超级用户 (root)，则插入一个 &#8221;$&#8221;；如果您是超级用户，则显示一个 &#8221;#&#8221;</li>
+
+<li>\xxx 插入一个用三位数 xxx（用零代替未使用的数字，如 &#8220;\007&#8221;）表示的 ASCII 字符 + \ 反斜杠</li>
+
+<li>[ 这个序列应该出现在不移动光标的字符序列（如颜色转义序列）之前。它使 bash 能够正确计算自动换行。 + ] 这个序列应该出现在非打印字符序列之后。</li>
+</ul>]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Python学习笔记(四):写文件</title>
+      <link href="http://fankai.me/2012/04/python-notes-writefile/"/>
+      <pubDate>2012-04-22T11:03:00+08:00</pubDate>
+      <author>樊凯</author>
+      <guid>http://fankai.me/2012/04/python-notes-writefile</guid>
+      <content:encoded><![CDATA[<p><img alt='Python' src='http://www.python.org/images/python-logo.gif' /></p>
+
+<h4 id='id42'>以写模式打开文件</h4>
+<div class='highlight'><pre><code class='python'><span class='n'>my_file</span> <span class='o'>=</span> <span class='nb'>open</span><span class='p'>(</span><span class='s'>&quot;data.txt&quot;</span><span class='p'>,</span><span class='s'>&quot;w&quot;</span><span class='p'>)</span>
+</code></pre>
+</div>
+<p><em>open()</em>函数的第二个参数是打开文件的模式，常见模式如下：</p>
+
+<ul>
+<li>w:写模式，该模式下，如果文件中有内容，则会把原有内容清空再写入新的数据</li>
+
+<li>a:追加模式，该模式下，新的数据会加入到原有文件的内容中，而不会清空原有的数据</li>
+
+<li>w+:读写模式，该模式下，文件可以进行读操作和写操作，而且不会清空原有数据</li>
+</ul>
+
+<p>注意<strong>如果写的文件在磁盘中不存在，则会先创建该文件再进行写操作</strong> 默认地，<em>print()</em>函数会将内容输出到屏幕中，如果希望将内容写到文件中则需要通过<em>file</em>参数来指定所使用的文件对象：</p>
+<div class='highlight'><pre><code class='python'><span class='n'>my_file</span> <span class='o'>=</span> <span class='nb'>open</span><span class='p'>(</span><span class='s'>&quot;data.txt&quot;</span><span class='p'>,</span><span class='s'>&quot;w&quot;</span><span class='p'>)</span>
+<span class='k'>print</span><span class='p'>(</span><span class='s'>&quot;Hi,this is python&quot;</span><span class='p'>,</span><span class='nb'>file</span> <span class='o'>=</span> <span class='n'>my_file</span><span class='p'>)</span>
+<span class='n'>my_file</span><span class='o'>.</span><span class='n'>close</span><span class='p'>()</span>
+</code></pre>
+</div>
+<p>完成操作时，务必要调用<em>close()</em>函数来关闭文件对象。</p>
+
+<h4 id='id43'>异常异常！</h4>
+
+<p>如果在写文件时，磁盘已满或者路径不存在，则会引发<strong>IOError</strong>异常，所以在进行写操作时也要进行<strong>try…except…</strong>方式的来捕获异常：</p>
+<div class='highlight'><pre><code class='python'><span class='k'>try</span> <span class='p'>:</span>
+	<span class='n'>my_file</span> <span class='o'>=</span> <span class='nb'>open</span><span class='p'>(</span><span class='s'>&quot;data.txt&quot;</span><span class='p'>,</span><span class='s'>&quot;w&quot;</span><span class='p'>)</span>
+	<span class='n'>my_file2</span> <span class='o'>=</span> <span class='nb'>open</span><span class='p'>(</span><span class='s'>&quot;file.txt&quot;</span><span class='p'>,</span><span class='s'>&quot;w&quot;</span><span class='p'>)</span>
+	
+	<span class='k'>print</span><span class='p'>(</span><span class='s'>&quot;Hi,this is python&quot;</span><span class='p'>,</span><span class='nb'>file</span> <span class='o'>=</span> <span class='n'>my_file</span><span class='p'>)</span>
+	<span class='k'>print</span><span class='p'>(</span><span class='s'>&quot;xixi&quot;</span><span class='p'>,</span><span class='nb'>file</span> <span class='o'>=</span> <span class='n'>myfile2</span><span class='p'>)</span>
+	
+	<span class='n'>my_file</span><span class='o'>.</span><span class='n'>close</span><span class='p'>()</span>
+	<span class='n'>my_file2</span><span class='o'>.</span><span class='n'>close</span><span class='p'>()</span>
+<span class='k'>except</span> <span class='ne'>IOError</span> <span class='p'>:</span>
+	<span class='k'>print</span><span class='p'>(</span><span class='s'>&quot;IOError&quot;</span><span class='p'>)</span>
+</code></pre>
+</div>
+<p>在上面的示例代码中如果my_file2在打开时出现了异常那么就会导致程序直接跳转到except代码块中去执行，这样引起的后果就是文件的<em>close()</em>方法没有办法执行了。我们希望的结果是，无论是否出现异常，文件都要安全的关闭，所以Python中也有类似Java中的<strong>finally</strong>代码块：</p>
+<div class='highlight'><pre><code class='python'><span class='k'>try</span> <span class='p'>:</span>
+	<span class='n'>my_file</span> <span class='o'>=</span> <span class='nb'>open</span><span class='p'>(</span><span class='s'>&quot;data.txt&quot;</span><span class='p'>,</span><span class='s'>&quot;w&quot;</span><span class='p'>)</span>
+	<span class='n'>my_file2</span> <span class='o'>=</span> <span class='nb'>open</span><span class='p'>(</span><span class='s'>&quot;file.txt&quot;</span><span class='p'>,</span><span class='s'>&quot;w&quot;</span><span class='p'>)</span>
+	
+	<span class='k'>print</span><span class='p'>(</span><span class='s'>&quot;Hi,this is python&quot;</span><span class='p'>,</span><span class='nb'>file</span> <span class='o'>=</span> <span class='n'>my_file</span><span class='p'>)</span>
+	<span class='k'>print</span><span class='p'>(</span><span class='s'>&quot;xixi&quot;</span><span class='p'>,</span><span class='nb'>file</span> <span class='o'>=</span> <span class='n'>myfile2</span><span class='p'>)</span>
+<span class='k'>except</span> <span class='ne'>IOError</span> <span class='p'>:</span>
+	<span class='k'>print</span><span class='p'>(</span><span class='s'>&quot;IOError&quot;</span><span class='p'>)</span>
+<span class='k'>finally</span> <span class='p'>:</span>
+	<span class='n'>my_file</span><span class='o'>.</span><span class='n'>close</span><span class='p'>()</span>
+	<span class='n'>my_file2</span><span class='o'>.</span><span class='n'>close</span><span class='p'>()</span>
+</code></pre>
+</div>
+<p>在仔细想想，如果my_file2打开时异常，那么就根本无法创建my_file2对象，那么在<strong>finally</strong>代码块中调用myfile2的<em>close()</em>函数时会引发<strong>NameError</strong>，所以在关闭时需要判断文件对象是否存在，如果存在，则调用<em>close()</em>函数进行关闭。Python内置的函数<em>locals()</em>会返回当前作用域中定义的所有变量的集合，所以我们需要判断变量是否存在<em>locals()</em>函数返回的集合中即可：</p>
+<div class='highlight'><pre><code class='python'><span class='k'>try</span> <span class='p'>:</span>
+	<span class='n'>my_file</span> <span class='o'>=</span> <span class='nb'>open</span><span class='p'>(</span><span class='s'>&quot;data.txt&quot;</span><span class='p'>,</span><span class='s'>&quot;w&quot;</span><span class='p'>)</span>
+	<span class='n'>my_file2</span> <span class='o'>=</span> <span class='nb'>open</span><span class='p'>(</span><span class='s'>&quot;file.txt&quot;</span><span class='p'>,</span><span class='s'>&quot;w&quot;</span><span class='p'>)</span>
+	
+	<span class='k'>print</span><span class='p'>(</span><span class='s'>&quot;Hi,this is python&quot;</span><span class='p'>,</span><span class='nb'>file</span> <span class='o'>=</span> <span class='n'>my_file</span><span class='p'>)</span>
+	<span class='k'>print</span><span class='p'>(</span><span class='s'>&quot;xixi&quot;</span><span class='p'>,</span><span class='nb'>file</span> <span class='o'>=</span> <span class='n'>myfile2</span><span class='p'>)</span>
+<span class='k'>except</span> <span class='ne'>IOError</span> <span class='p'>:</span>
+	<span class='k'>print</span><span class='p'>(</span><span class='s'>&quot;IOError&quot;</span><span class='p'>)</span>
+<span class='k'>finally</span> <span class='p'>:</span>
+	<span class='k'>if</span> <span class='n'>my_file</span> <span class='ow'>in</span> <span class='nb'>locals</span><span class='p'>()</span> <span class='p'>:</span>
+		<span class='n'>my_file</span><span class='o'>.</span><span class='n'>close</span><span class='p'>()</span>
+	<span class='k'>if</span> <span class='n'>my_file2</span> <span class='ow'>in</span> <span class='nb'>locals</span><span class='p'>()</span> <span class='p'>:</span>
+		<span class='n'>my_file2</span><span class='o'>.</span><span class='n'>close</span><span class='p'>()</span>
+</code></pre>
+</div>
+<h5 id='id44'>获取异常信息</h5>
+
+<p>当出现异常时，代码会跳转到<strong>except</strong>代码块中，但是无法获取错误的详细信息。例如在上面的写文件的代码中，如果<em>open()</em>函数调用出现异常，那么是因为磁盘已满？还是没有文件的写入权限(只读文件)? 所以，我们不仅仅需要知道错误的类型，还需要知道错误的详细内容：</p>
+<div class='highlight'><pre><code class='python'><span class='k'>try</span> <span class='p'>:</span>
+	<span class='n'>my_file</span> <span class='o'>=</span> <span class='nb'>open</span><span class='p'>(</span><span class='s'>&quot;data.txt&quot;</span><span class='p'>,</span><span class='s'>&quot;w&quot;</span><span class='p'>)</span>
+	<span class='n'>my_file2</span> <span class='o'>=</span> <span class='nb'>open</span><span class='p'>(</span><span class='s'>&quot;file.txt&quot;</span><span class='p'>,</span><span class='s'>&quot;w&quot;</span><span class='p'>)</span>
+	
+	<span class='k'>print</span><span class='p'>(</span><span class='s'>&quot;Hi,this is python&quot;</span><span class='p'>,</span><span class='nb'>file</span> <span class='o'>=</span> <span class='n'>my_file</span><span class='p'>)</span>
+	<span class='k'>print</span><span class='p'>(</span><span class='s'>&quot;xixi&quot;</span><span class='p'>,</span><span class='nb'>file</span> <span class='o'>=</span> <span class='n'>myfile2</span><span class='p'>)</span>
+<span class='k'>except</span> <span class='ne'>IOError</span> <span class='k'>as</span> <span class='n'>err</span> <span class='p'>:</span>
+	<span class='k'>print</span><span class='p'>(</span><span class='s'>&quot;IOError:&quot;</span> <span class='o'>+</span> <span class='nb'>str</span><span class='p'>(</span><span class='n'>err</span><span class='p'>))</span>
+<span class='k'>finally</span> <span class='p'>:</span>
+	<span class='k'>if</span> <span class='n'>my_file</span> <span class='ow'>in</span> <span class='nb'>locals</span><span class='p'>()</span> <span class='p'>:</span>
+		<span class='n'>my_file</span><span class='o'>.</span><span class='n'>close</span><span class='p'>()</span>
+	<span class='k'>if</span> <span class='n'>my_file2</span> <span class='ow'>in</span> <span class='nb'>locals</span><span class='p'>()</span> <span class='p'>:</span>
+		<span class='n'>my_file2</span><span class='o'>.</span><span class='n'>close</span><span class='p'>()</span>
+</code></pre>
+</div>
+<p>注意上面示例代码中的<strong>except</strong>部分，将异常的对象给了变量err，然后在显示错误信息时，将err的内容进行输出。<em>str()</em>函数用于将其他类型的数据转换为字符串类型。</p>
+
+<h4 id='id45'>更简单的文件处理方式</h4>
+
+<p>对于文件操作时，<strong>try…except…finally</strong>的方式非常的常用，但是不够简洁，Python中提供了<em>with… as…</em>语法来简化这样的操作:</p>
+<div class='highlight'><pre><code class='python'><span class='k'>try</span> <span class='p'>:</span> 
+	<span class='k'>with</span> <span class='nb'>open</span><span class='p'>(</span><span class='s'>&quot;data.txt&quot;</span><span class='p'>,</span><span class='s'>&quot;w&quot;</span><span class='p'>)</span> <span class='k'>as</span> <span class='n'>my_file</span> <span class='p'>:</span>
+		<span class='k'>print</span><span class='p'>(</span><span class='s'>&quot;Hi,this is python&quot;</span><span class='p'>,</span><span class='nb'>file</span> <span class='o'>=</span> <span class='n'>my_file</span><span class='p'>)</span>
+	<span class='k'>with</span> <span class='nb'>open</span><span class='p'>(</span><span class='s'>&quot;file.txt&quot;</span><span class='p'>,</span><span class='s'>&quot;w&quot;</span><span class='p'>)</span> <span class='k'>as</span> <span class='n'>my_file2</span> <span class='p'>:</span>
+		<span class='k'>print</span><span class='p'>(</span><span class='s'>&quot;xixi&quot;</span><span class='p'>,</span><span class='nb'>file</span> <span class='o'>=</span> <span class='n'>myfile2</span><span class='p'>)</span>
+<span class='k'>except</span> <span class='ne'>IOError</span> <span class='k'>as</span> <span class='n'>err</span> <span class='p'>:</span>
+	<span class='k'>print</span><span class='p'>(</span><span class='s'>&quot;IOError:&quot;</span> <span class='o'>+</span> <span class='nb'>str</span><span class='p'>(</span><span class='n'>err</span><span class='p'>))</span>
+</code></pre>
+</div>
+<p>使用<strong>with</strong>语法进行操作时，不需要关心文件的关闭，因为Python会自动为我们做这些。上面的代码还可以简化如下：</p>
+<div class='highlight'><pre><code class='python'><span class='k'>try</span> <span class='p'>:</span> 
+	<span class='k'>with</span> <span class='nb'>open</span><span class='p'>(</span><span class='s'>&quot;data.txt&quot;</span><span class='p'>,</span><span class='s'>&quot;w&quot;</span><span class='p'>)</span> <span class='k'>as</span> <span class='n'>my_file</span><span class='p'>,</span><span class='nb'>open</span><span class='p'>(</span><span class='s'>&quot;file.txt&quot;</span><span class='p'>,</span><span class='s'>&quot;w&quot;</span><span class='p'>)</span> <span class='k'>as</span> <span class='n'>my_file2</span> <span class='p'>:</span>
+		<span class='k'>print</span><span class='p'>(</span><span class='s'>&quot;Hi,this is python&quot;</span><span class='p'>,</span><span class='nb'>file</span> <span class='o'>=</span> <span class='n'>my_file</span><span class='p'>)</span>
+		<span class='k'>print</span><span class='p'>(</span><span class='s'>&quot;xixi&quot;</span><span class='p'>,</span><span class='nb'>file</span> <span class='o'>=</span> <span class='n'>myfile2</span><span class='p'>)</span>
+<span class='k'>except</span> <span class='ne'>IOError</span> <span class='k'>as</span> <span class='n'>err</span> <span class='p'>:</span>
+	<span class='k'>print</span><span class='p'>(</span><span class='s'>&quot;IOError:&quot;</span> <span class='o'>+</span> <span class='nb'>str</span><span class='p'>(</span><span class='n'>err</span><span class='p'>))</span>
+</code></pre>
+</div>
+<h4 id='id46'>以二进制方式来读写数据</h4>
+
+<p>Python中提供了<em>pickle</em>模块来对文件进行二进制的操作，例如<strong>dump()</strong>函数用于将文本以二进制的方式存储在文件中。<strong>load()</strong>函数用于将二进制文件读取到Python中。</p>
+<div class='highlight'><pre><code class='python'><span class='kn'>import</span> <span class='nn'>pickle</span>
+
+<span class='k'>try</span><span class='p'>:</span>
+	<span class='k'>with</span> <span class='nb'>open</span><span class='p'>(</span><span class='s'>&quot;myfile.dat&quot;</span><span class='p'>,</span><span class='s'>&quot;wb&quot;</span><span class='p'>)</span> <span class='k'>as</span> <span class='n'>myfile</span> <span class='p'>:</span>
+		<span class='n'>pickle</span><span class='o'>.</span><span class='n'>dump</span><span class='p'>(</span><span class='s'>&quot;Hi,this is a Python&quot;</span><span class='p'>,</span><span class='n'>myfile</span><span class='p'>)</span>
+<span class='k'>except</span> <span class='n'>PickleError</span> <span class='k'>as</span> <span class='n'>err</span><span class='p'>:</span>
+	<span class='k'>print</span><span class='p'>(</span><span class='s'>&quot;error:&quot;</span> <span class='o'>+</span> <span class='nb'>str</span><span class='p'>(</span><span class='n'>err</span><span class='p'>))</span>
+</code></pre>
+</div>
+<p>上面的代码中用到了<em>pickle</em>模块，所以我们需要使用关键字<em>import</em>将其导入到我们的代码中。<em>wb</em>模式代表以二进制的形式进行写操作。读取二进制文件示例如下：</p>
+<div class='highlight'><pre><code class='python'><span class='kn'>import</span> <span class='nn'>pickle</span>
+
+<span class='k'>try</span><span class='p'>:</span>
+	<span class='k'>with</span> <span class='nb'>open</span><span class='p'>(</span><span class='s'>&quot;myfile.dat&quot;</span><span class='p'>,</span><span class='s'>&quot;rb&quot;</span><span class='p'>)</span> <span class='k'>as</span> <span class='n'>myfile</span> <span class='p'>:</span>
+		<span class='n'>content</span> <span class='o'>=</span> <span class='n'>pickle</span><span class='o'>.</span><span class='n'>load</span><span class='p'>(</span><span class='n'>myfile</span><span class='p'>);</span>
+	<span class='k'>print</span><span class='p'>(</span><span class='n'>content</span><span class='p'>)</span>
+<span class='k'>except</span> <span class='n'>PickleError</span> <span class='k'>as</span> <span class='n'>err</span> <span class='p'>:</span>
+	<span class='k'>print</span><span class='p'>(</span><span class='s'>&quot;error:&quot;</span> <span class='o'>+</span> <span class='nb'>str</span><span class='p'>(</span><span class='n'>err</span><span class='p'>))</span>
+</code></pre>
+</div>
+<p><em>rb</em>代表以二进制模式来读取文件。</p>]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>2012-04月推荐</title>
+      <link href="http://fankai.me/2012/04/recommend/"/>
+      <pubDate>2012-04-21T12:17:00+08:00</pubDate>
+      <author>樊凯</author>
+      <guid>http://fankai.me/2012/04/recommend</guid>
+      <content:encoded><![CDATA[<ul>
+<li><a href='http://rogerdudler.github.com/git-guide/index.zh.html'>git简易指南</a></li>
+
+<li><a href='http://www.oschina.net/news/28122/reasons-we-should-learn-markdown'>为什么我们要学习 Markdown 的三个理由</a></li>
+
+<li><a href='http://www.ibm.com/developerworks/cn/opensource/os-cn-spring-jpa/'>使用 Spring Data JPA 简化 JPA 开发</a></li>
+
+<li><a href='http://www.ibm.com/developerworks/cn/opensource/os-cn-jcaptcha/index.html'>使用 JCaptcha 开发图形和声音验证码</a></li>
+
+<li><a href='http://www.ibm.com/developerworks/cn/opensource/os-nodejs/index.html'>Node.js 究竟是什么？</a></li>
+
+<li><a href='http://ip.taobao.com/instructions.php'>淘宝IP地址库</a></li>
+
+<li><a href='http://jquerymobile.com/'>jquery-mobile</a></li>
+
+<li><a href='http://scriptogr.am'>基于Dropbox的blog系统 Scriptogr.am</a></li>
+</ul>]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Python学习笔记(三):读文件与异常处理</title>
+      <link href="http://fankai.me/2012/04/python-notes-file/"/>
+      <pubDate>2012-04-20T09:24:00+08:00</pubDate>
+      <author>樊凯</author>
+      <guid>http://fankai.me/2012/04/python-notes-file</guid>
+      <content:encoded><![CDATA[<p><img alt='Python' src='http://www.python.org/images/python-logo.gif' /></p>
+
+<h4 id='id38'>逐行读取文件</h4>
+
+<p>Python中提供了<em>open(filename)</em>函数用于读取磁盘上的文件,示例代码：</p>
+<div class='highlight'><pre><code class='python'><span class='n'>data</span> <span class='o'>=</span> <span class='nb'>open</span><span class='p'>(</span><span class='s'>&quot;data.txt&quot;</span><span class='p'>)</span>
+</code></pre>
+</div>
+<p>将文件读取后赋给变量data，然后通过Python内置的函数<em>readline()</em>来读取文件中的一行数据。</p>
+<div class='highlight'><pre><code class='python'><span class='c'>#读取第一行文本</span>
+<span class='n'>line_txt</span> <span class='o'>=</span> <span class='n'>data</span><span class='o'>.</span><span class='n'>readline</span><span class='p'>()</span>
+<span class='c'>#读取第二行文本</span>
+<span class='n'>next_txt</span> <span class='o'>=</span> <span class='n'>data</span><span class='o'>.</span><span class='n'>readline</span><span class='p'>()</span>
+</code></pre>
+</div>
+<p>需要要注意的是，文件读取完毕后，一定要调用<em>close()</em>方法来关闭文件。</p>
+<div class='highlight'><pre><code class='python'><span class='n'>data</span><span class='o'>.</span><span class='n'>close</span><span class='p'>()</span>
+</code></pre>
+</div>
+<h4 id='id39'>利用循环来读取文件</h4>
+<div class='highlight'><pre><code class='python'><span class='n'>data</span> <span class='o'>=</span> <span class='nb'>open</span><span class='p'>(</span><span class='s'>&quot;data.txt&quot;</span><span class='p'>)</span>
+<span class='k'>for</span> <span class='n'>line</span> <span class='ow'>in</span> <span class='n'>data</span> <span class='p'>:</span>
+	<span class='k'>print</span><span class='p'>(</span><span class='n'>line</span><span class='p'>)</span>
+<span class='n'>data</span><span class='o'>.</span><span class='n'>close</span><span class='p'>()</span>
+</code></pre>
+</div>
+<h4 id='id40'>读取不存在的文件</h4>
+
+<p>如果使用Python来读取一个不存在的文件，则会引发<strong>IOError</strong>异常，Python中采用了和Java中一样的异常处理机制来处理异常。</p>
+<div class='highlight'><pre><code class='python'><span class='k'>try</span> <span class='p'>:</span>
+	<span class='n'>data</span> <span class='o'>=</span> <span class='nb'>open</span><span class='p'>(</span><span class='s'>&quot;data.txt&quot;</span><span class='p'>)</span>
+	<span class='k'>for</span> <span class='n'>line</span> <span class='ow'>in</span> <span class='n'>data</span> <span class='p'>:</span>
+		<span class='k'>print</span><span class='p'>(</span><span class='n'>line</span><span class='p'>)</span>
+	<span class='n'>data</span><span class='o'>.</span><span class='n'>close</span><span class='p'>()</span>
+<span class='k'>except</span> <span class='p'>:</span>
+	<span class='k'>pass</span>
+</code></pre>
+</div>
+<p>上面的<strong>pass</strong>关键字表示什么都不做，相当与Java中的空或null，如果需要在命令行中输出提示，可以这样：</p>
+<div class='highlight'><pre><code class='python'><span class='k'>try</span> <span class='p'>:</span>
+	<span class='n'>data</span> <span class='o'>=</span> <span class='nb'>open</span><span class='p'>(</span><span class='s'>&quot;data.txt&quot;</span><span class='p'>)</span>
+	<span class='k'>for</span> <span class='n'>line</span> <span class='ow'>in</span> <span class='n'>data</span> <span class='p'>:</span>
+		<span class='k'>print</span><span class='p'>(</span><span class='n'>line</span><span class='p'>)</span>
+	<span class='n'>data</span><span class='o'>.</span><span class='n'>close</span><span class='p'>()</span>
+<span class='k'>except</span> <span class='p'>:</span>
+	<span class='k'>print</span><span class='p'>(</span><span class='s'>&quot;can&#39;t find this file&quot;</span><span class='p'>)</span>
+</code></pre>
+</div>
+<p>使用<strong>try:…except:…</strong>语法可以处理所有的异常，如果需要指定处理某个异常，例如上面例子中找不到文件的异常IOError，则可以在<strong>except</strong>语句中指出：</p>
+<div class='highlight'><pre><code class='python'><span class='k'>try</span> <span class='p'>:</span>
+	<span class='n'>data</span> <span class='o'>=</span> <span class='nb'>open</span><span class='p'>(</span><span class='s'>&quot;data.txt&quot;</span><span class='p'>)</span>
+	<span class='k'>for</span> <span class='n'>line</span> <span class='ow'>in</span> <span class='n'>data</span> <span class='p'>:</span>
+		<span class='k'>print</span><span class='p'>(</span><span class='n'>line</span><span class='p'>)</span>
+	<span class='n'>data</span><span class='o'>.</span><span class='n'>close</span><span class='p'>()</span>
+<span class='k'>except</span> <span class='ne'>IOError</span><span class='p'>:</span>
+	<span class='k'>print</span><span class='p'>(</span><span class='s'>&quot;can&#39;t find this file&quot;</span><span class='p'>)</span>
+</code></pre>
+</div>
+<h4 id='id41'>其他知识点</h4>
+
+<ol>
+<li>通过<em>a,b = 12,34</em>可以同时给变量a和变量b赋值，a的值为12，b的值为34</li>
+
+<li>在文件的读的过程中调用<em>seek()</em>函数可以让文件回到第一行的位置重新读取</li>
+
+<li>字符串的<em>split(sep)</em>函数可以将一个字符串根据sep分割为列表</li>
+
+<li>字符串的<em>find(str)</em>可以在字符串中查找str的下标，如果未找到，则返回-1</li>
+</ol>]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Python学习笔记(二):函数</title>
+      <link href="http://fankai.me/2012/04/python-notes-function/"/>
+      <pubDate>2012-04-20T09:22:00+08:00</pubDate>
+      <author>樊凯</author>
+      <guid>http://fankai.me/2012/04/python-notes-function</guid>
+      <content:encoded><![CDATA[<p><img alt='Python' src='http://www.python.org/images/python-logo.gif' /></p>
+
+<h4 id='id36'>函数中的参数</h4>
+
+<p>定义一个函数，在函数中打印N(参数)次“This is Python”，示例如下：</p>
+<div class='highlight'><pre><code class='python'><span class='k'>def</span> <span class='nf'>print_msg</span><span class='p'>(</span><span class='n'>num</span><span class='p'>)</span> <span class='p'>:</span>
+	<span class='k'>for</span> <span class='n'>n</span> <span class='ow'>in</span> <span class='nb'>range</span><span class='p'>(</span><span class='n'>num</span><span class='p'>)</span> <span class='p'>:</span>
+		<span class='k'>print</span><span class='p'>(</span><span class='s'>&quot;This is Python&quot;</span><span class='p'>)</span>
+
+<span class='c'>#函数调用</span>
+<span class='n'>print_msg</span><span class='p'>(</span><span class='mi'>3</span><span class='p'>)</span>
+</code></pre>
+</div>
+<p>其中<em>range()</em>函数会返回一个迭代器，生成一个从0到某个数(不包含该数)的数字列表</p>
+
+<h4 id='id37'>参数中的默认值</h4>
+
+<p>上面的打印函数中，需要定义默认打印的次数的5次。在调用该函数时可以重新定义打印次数，如果未定义打印次数，则就采用默认的打印次数5，示例如下：</p>
+<div class='highlight'><pre><code class='python'><span class='k'>def</span> <span class='nf'>print_msg</span><span class='p'>(</span><span class='n'>num</span> <span class='o'>=</span> <span class='mi'>5</span><span class='p'>)</span> <span class='p'>:</span>
+	<span class='k'>for</span> <span class='n'>n</span> <span class='ow'>in</span> <span class='nb'>range</span><span class='p'>(</span><span class='n'>num</span><span class='p'>)</span> <span class='p'>:</span>
+		<span class='k'>print</span><span class='p'>(</span><span class='s'>&quot;This is Python&quot;</span><span class='p'>)</span>
+
+<span class='c'>#使用默认次数5进行打印</span>
+<span class='n'>print_msg</span><span class='p'>()</span>
+<span class='c'>#使用自定次数2进行打印</span>
+<span class='n'>print_msg</span><span class='p'>(</span><span class='mi'>2</span><span class='p'>)</span>
+</code></pre>
+</div>]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Python学习笔记(一):列表和函数初步</title>
+      <link href="http://fankai.me/2012/04/python-notes-list/"/>
+      <pubDate>2012-04-18T17:11:00+08:00</pubDate>
+      <author>樊凯</author>
+      <guid>http://fankai.me/2012/04/python-notes-list</guid>
+      <content:encoded><![CDATA[<p><img alt='Python' src='http://www.python.org/images/python-logo.gif' /></p>
+
+<h4 id='python'>Python的安装和基本使用:</h4>
+
+<ul>
+<li>MacOS和Liunx上自带Python</li>
+
+<li>Windows中需要自己去安装Python，在<a href='http://www.python.org'>Python</a>的官方网站上可以去下载适合自己操作系统的版本</li>
+
+<li>检测自己的系统中是否有Python环境</li>
+</ul>
+<div class='highlight'><pre><code class='python'><span class='n'>python</span> <span class='o'>-</span><span class='n'>V</span>
+</code></pre>
+</div>
+<ul>
+<li>Python安装后自带一个名称为IDLE的编辑器，在命令行中输入<em>python</em>即可进入IDLE环境，退出此环境时输入<em>quit()</em></li>
+</ul>
+
+<h4 id='python'>Python列表</h4>
+
+<p>python中的列表的概念有些类似与Java中的数组，写法为：</p>
+<div class='highlight'><pre><code class='python'><span class='n'>students</span> <span class='o'>=</span> <span class='p'>[</span><span class='s'>&quot;Jack&quot;</span><span class='p'>,</span><span class='s'>&quot;Tom&quot;</span><span class='p'>,</span><span class='s'>&quot;Jerry&quot;</span><span class='p'>,</span><span class='s'>&quot;Rose&quot;</span><span class='p'>]</span>
+</code></pre>
+</div>
+<p>注意：</p>
+
+<ol>
+<li>Python中的变量不用声明，可以直接使用 2. 列表中各项之间使用逗号分割</li>
+
+<li>通过下标(索引)来获取列表中的值，例如<em>student[1]</em></li>
+
+<li><em>print()</em>函数用于向控制台中打印内容，例如<em>print(student[0])</em></li>
+</ol>
+
+<h5 id='id32'>列表实例代码</h5>
+<div class='highlight'><pre><code class='python'><span class='n'>student</span> <span class='o'>=</span> <span class='p'>[</span><span class='s'>&quot;Jack&quot;</span><span class='p'>,</span><span class='s'>&quot;Tom&quot;</span><span class='p'>,</span><span class='s'>&quot;Jerry&quot;</span><span class='p'>,</span><span class='s'>&quot;Rose&quot;</span><span class='p'>]</span>
+<span class='k'>print</span><span class='p'>(</span><span class='nb'>len</span><span class='p'>(</span><span class='n'>student</span><span class='p'>))</span>
+<span class='k'>print</span><span class='p'>(</span><span class='n'>student</span>\<span class='p'>[</span><span class='mi'>1</span>\<span class='p'>])</span>
+<span class='n'>student</span><span class='o'>.</span><span class='n'>append</span><span class='p'>(</span><span class='s'>&quot;Alex&quot;</span><span class='p'>)</span>
+<span class='n'>studnet</span><span class='o'>.</span><span class='n'>pop</span><span class='p'>()</span>
+<span class='k'>print</span><span class='p'>(</span><span class='n'>student</span><span class='p'>)</span>
+<span class='n'>student</span><span class='o'>.</span><span class='n'>extend</span><span class='p'>([</span><span class='s'>&quot;zhangsan&quot;</span><span class='p'>,</span><span class='s'>&quot;lisi&quot;</span><span class='p'>])</span>
+<span class='n'>student</span><span class='o'>.</span><span class='n'>remove</span><span class='p'>(</span><span class='s'>&quot;Jack&quot;</span><span class='p'>)</span>
+<span class='n'>student</span><span class='o'>.</span><span class='n'>insert</span><span class='p'>(</span><span class='mi'>1</span><span class='p'>,</span><span class='s'>&quot;Hanks&quot;</span><span class='p'>)</span>
+</code></pre>
+</div>
+<p>代码解释：</p>
+
+<ol>
+<li>len()函数用于输出列表的长度</li>
+
+<li>append()函数用于在列表的末尾增加一个数据项</li>
+
+<li>pop()函数用于删除列表的最后一项</li>
+
+<li>extend()函数用于在列表的末尾添加一个数据项集合</li>
+
+<li>remove()函数用于删除列表中一个特定项，如果列表中有重复项，则只会删除第一个</li>
+
+<li>insert()函数用于在特定的位置前添加一个数据项</li>
+</ol>
+
+<h5 id='id33'>利用循环迭代列表</h5>
+<div class='highlight'><pre><code class='python'><span class='k'>for</span> <span class='n'>stu</span> <span class='ow'>in</span> <span class='n'>student</span><span class='p'>:</span>
+	<span class='k'>print</span><span class='p'>(</span><span class='nb'>str</span><span class='p'>)</span>
+<span class='c'>#or</span>
+<span class='n'>index</span> <span class='o'>=</span> <span class='mi'>0</span>
+<span class='k'>while</span> <span class='n'>index</span> <span class='o'>&lt;</span> <span class='nb'>len</span><span class='p'>(</span><span class='n'>student</span><span class='p'>):</span>
+	<span class='k'>print</span><span class='p'>(</span><span class='n'>student</span><span class='p'>[</span><span class='n'>index</span><span class='p'>])</span>
+	<span class='n'>index</span> <span class='o'>=</span> <span class='n'>index</span> <span class='o'>+</span> <span class='mi'>1</span>
+</code></pre>
+</div>
+<p>注意：</p>
+
+<ol>
+<li>for和while后面的冒号不能省略</li>
+
+<li>Python的for、while、if、函数定义等都没有类似Java或C中大括号来定义这些代码块的边界，而是采用缩进的方式来定义代码的边界</li>
+
+<li>Python没有index++这种语法</li>
+</ol>
+
+<h5 id='id34'>列表中可以混合存放多种数据类型的数据</h5>
+
+<p>例如：</p>
+<div class='highlight'><pre><code class='python'><span class='n'>student</span> <span class='o'>=</span> <span class='p'>[</span><span class='s'>&quot;Tom&quot;</span><span class='p'>,</span><span class='mi'>23</span><span class='p'>,</span><span class='s'>&quot;Jerry&quot;</span><span class='p'>,</span><span class='mi'>22</span><span class='p'>,</span><span class='s'>&quot;Rose&quot;</span><span class='p'>,</span><span class='mi'>18</span><span class='p'>]</span>
+</code></pre>
+</div>
+<h5 id='python'>Python的列表中还可以包含其他的列表</h5>
+<div class='highlight'><pre><code class='python'><span class='n'>student</span> <span class='o'>=</span> <span class='p'>[</span><span class='s'>&quot;aa&quot;</span><span class='p'>,</span><span class='s'>&quot;bb&quot;</span><span class='p'>,</span><span class='s'>&quot;cc&quot;</span><span class='p'>,[</span><span class='s'>&quot;xxx&quot;</span><span class='p'>,</span><span class='s'>&quot;yyy&quot;</span><span class='p'>,</span><span class='s'>&quot;zzz&quot;</span><span class='p'>,[</span><span class='s'>&quot;heh&quot;</span><span class='p'>,</span><span class='s'>&quot;xixi&quot;</span><span class='p'>]]]</span>
+</code></pre>
+</div>
+<p>可以利用Python中的内置函数<em>isinstance(name,type)</em>来判断变量的类型，例如调用<em>isinstance(student,list)</em>返回值将为true，list代表就是列表类型。所以在迭代这个数组时，可以使用如下代码：</p>
+<div class='highlight'><pre><code class='python'><span class='k'>for</span> <span class='n'>item</span> <span class='ow'>in</span> <span class='n'>student</span> <span class='p'>:</span>
+	<span class='k'>if</span> <span class='nb'>isinstance</span><span class='p'>(</span><span class='n'>item</span><span class='p'>,</span><span class='nb'>list</span><span class='p'>)</span> <span class='p'>:</span>
+		<span class='k'>for</span> <span class='n'>item_sub</span> <span class='ow'>in</span> <span class='n'>item</span> <span class='p'>:</span>
+			<span class='k'>if</span> <span class='nb'>isinstance</span><span class='p'>(</span><span class='n'>item_sub</span><span class='p'>,</span><span class='nb'>list</span><span class='p'>)</span> <span class='p'>:</span>
+				<span class='k'>for</span> <span class='n'>item_sub_sub</span> <span class='ow'>in</span> <span class='n'>item_sub</span> <span class='p'>:</span>
+					<span class='k'>print</span><span class='p'>(</span><span class='n'>item_sub_sub</span><span class='p'>)</span>
+			<span class='k'>else</span> <span class='p'>:</span>
+				<span class='k'>print</span><span class='p'>(</span><span class='n'>item_sub</span><span class='p'>)</span>
+	<span class='k'>else</span> <span class='p'>:</span>
+		<span class='k'>print</span><span class='p'>(</span><span class='n'>item</span><span class='p'>)</span>
+</code></pre>
+</div>
+<p>看到上面代码基本处于崩溃状态，因为用<strong>递归</strong>可以很好的来解决这个问题，但是递归在使用时需要用到函数，那么就来看下Python中函数的定义：</p>
+<div class='highlight'><pre><code class='python'><span class='k'>def</span> <span class='nf'>show_list</span><span class='p'>(</span><span class='n'>mylist</span><span class='p'>)</span> <span class='p'>:</span>
+	<span class='k'>for</span> <span class='n'>item</span> <span class='ow'>in</span> <span class='n'>mylist</span> <span class='p'>:</span>
+		<span class='k'>if</span> <span class='nb'>isinstance</span><span class='p'>(</span><span class='n'>item</span><span class='p'>,</span><span class='nb'>list</span><span class='p'>)</span> <span class='p'>:</span>
+			<span class='n'>show_list</span><span class='p'>(</span><span class='n'>item</span><span class='p'>)</span>
+		<span class='k'>else</span> <span class='p'>:</span>
+			<span class='k'>print</span><span class='p'>(</span><span class='n'>item</span><span class='p'>)</span>
+</code></pre>
+</div>
+<p>其中<em>def</em>关键字用于定义函数，类似JavaScript中的<em>funciton</em>，show_list为函数名，小括号内是参数列表，该函数调用方法：</p>
+<div class='highlight'><pre><code class='python'><span class='n'>show_list</span><span class='p'>(</span><span class='n'>student</span><span class='p'>)</span>
+</code></pre>
+</div>
+<h5 id='id35'>注释</h5>
+
+<ol>
+<li>Python中多行注释可以以三个双引号(或三个单引号)开始，以三个双引号(单引号)结束</li>
+</ol>
+
+<p>2. 单行注释使用#开始，以行尾的结束而结束</p>
+
+<h5 id='python'>将Python代码写入到文件中</h5>
+
+<ul>
+<li>Python源代码文件后缀名为.py</li>
+
+<li>在命令行中使用命令<em>python xxx.py</em>来运行一个Python文件中的代码</li>
+
+<li>Python文件中如果需要使用中文，则需要在文件的第一行写：</li>
+</ul>
+<div class='highlight'><pre><code class='python'>\<span class='c'>#coding=UTF-8</span>
+</code></pre>
+</div>
+<p>Python文件示例：</p>
+<div class='highlight'><pre><code class='python'>\<span class='c'>#coding=UTF-8</span>
+<span class='n'>student</span> <span class='o'>=</span> <span class='p'>[</span><span class='s'>&quot;aa&quot;</span><span class='p'>,</span><span class='s'>&quot;bb&quot;</span><span class='p'>,</span><span class='s'>&quot;cc&quot;</span><span class='p'>,[</span><span class='s'>&quot;xxx&quot;</span><span class='p'>,</span><span class='s'>&quot;yyy&quot;</span><span class='p'>,</span><span class='s'>&quot;zzz&quot;</span><span class='p'>,[</span><span class='s'>&quot;heh&quot;</span><span class='p'>,</span><span class='s'>&quot;xixi&quot;</span><span class='p'>]]]</span>
+
+<span class='sd'>&#39;&#39;&#39;</span>
+<span class='sd'>这是一个注释</span>
+<span class='sd'>&#39;&#39;&#39;</span>
+<span class='k'>def</span> <span class='nf'>show_list</span><span class='p'>(</span><span class='n'>mylist</span><span class='p'>)</span> <span class='p'>:</span>
+	<span class='k'>for</span> <span class='n'>item</span> <span class='ow'>in</span> <span class='n'>mylist</span> <span class='p'>:</span>
+		<span class='k'>if</span> <span class='nb'>isinstance</span><span class='p'>(</span><span class='n'>item</span><span class='p'>,</span><span class='nb'>list</span><span class='p'>)</span> <span class='p'>:</span>
+			<span class='n'>show_list</span><span class='p'>(</span><span class='n'>item</span><span class='p'>)</span>
+		<span class='k'>else</span> <span class='p'>:</span>
+			<span class='k'>print</span><span class='p'>(</span><span class='n'>item</span><span class='p'>)</span>
+
+<span class='n'>show_list</span><span class='p'>(</span><span class='n'>student</span><span class='p'>)</span>
+</code></pre>
+</div>]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Head First Python</title>
+      <link href="http://fankai.me/2012/04/headfirstpython/"/>
+      <pubDate>2012-04-18T12:03:00+08:00</pubDate>
+      <author>樊凯</author>
+      <guid>http://fankai.me/2012/04/headfirstpython</guid>
+      <content:encoded><![CDATA[<p><img alt='Head First Python' src='http://ww4.sinaimg.cn/mw600/62772de6jw1ds3npjafjhj.jpg' /><br />买《光明与磊落》时，顺便买了刚出版的《Head First Python》，一直很喜欢Head First系列的书籍，希望一如既往的好，当然，最近我也会写些关于Python的学习心得。</p>]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>回归简约</title>
+      <link href="http://fankai.me/2012/04/jianyue/"/>
+      <pubDate>2012-04-18T11:01:00+08:00</pubDate>
+      <author>樊凯</author>
+      <guid>http://fankai.me/2012/04/jianyue</guid>
+      <content:encoded><![CDATA[<p>重新把Blog设置为原生的Jekyll了，不在使用<a href='http://www.octopress.org'>Octopress</a>和<a href='http://jekyllbootstrap.com/'>jekyllbootstrap</a>这些Jekyll的衍生版了。原因很简单，虽然使用这些衍生版让你觉得很简单，但是也失去了深入了解Jekyll的机会。还有一个原因，喜欢Jekyll这套主题，很简约和实用。</p>]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>光明与磊落</title>
+      <link href="http://fankai.me/2012/04/guangmingyuleiluo/"/>
+      <pubDate>2012-04-18T10:05:00+08:00</pubDate>
+      <author>樊凯</author>
+      <guid>http://fankai.me/2012/04/guangmingyuleiluo</guid>
+      <content:encoded><![CDATA[<p><img alt='光明与磊落' src='http://ww1.sinaimg.cn/mw600/62772de6jw1ds3k8zf4suj.jpg' /><br />在京东上购买的书到了，￥9.9很是超值！</p>]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>在Java中使用Gravatar头像服务</title>
+      <link href="http://fankai.me/2012/04/use-gravator-in-java/"/>
+      <pubDate>2012-04-15T11:07:00+08:00</pubDate>
+      <author>樊凯</author>
+      <guid>http://fankai.me/2012/04/use-gravator-in-java</guid>
+      <content:encoded><![CDATA[<p><a href='http://en.gravatar.com/'>Gravatar</a>是一个从事全球头像服务的网站，其实也就是根据你注册的电子邮件地址来绑定一个头像(当然需要你自己上传)。当你在一个支持Gravatar服务的网站上使用你的电子邮件地址作为注册的邮箱是，该网站就可以自动读取到你在Gravatar网站是设置的头像并显示。这样就保证了你一个头像，全网通用了。对于开发者来说也不需要开发头像上传服务了。只需要让用户在<a href='http://en.gravatar.com'>Gravator</a>上进行设置即可。</p>
+
+<p>在Java的Web项目中使用Gravator也是非常简单的，方式有两种：</p>
+
+<h4 id='1'>方法1：自己动手</h4>
+
+<ul>
+<li>创建<a href='http://en.gravatar.com/site/implement/images/java/'>MD5Util</a>类</li>
+</ul>
+<div class='highlight'><pre><code class='java'><span class='kd'>public</span> <span class='kd'>class</span> <span class='nc'>MD5Util</span> <span class='o'>{</span>
+  <span class='kd'>public</span> <span class='kd'>static</span> <span class='n'>String</span> <span class='nf'>hex</span><span class='o'>(</span><span class='kt'>byte</span><span class='o'>[]</span> <span class='n'>array</span><span class='o'>)</span> <span class='o'>{</span>
+      <span class='n'>StringBuffer</span> <span class='n'>sb</span> <span class='o'>=</span> <span class='k'>new</span> <span class='n'>StringBuffer</span><span class='o'>();</span>
+      <span class='k'>for</span> <span class='o'>(</span><span class='kt'>int</span> <span class='n'>i</span> <span class='o'>=</span> <span class='mi'>0</span><span class='o'>;</span> <span class='n'>i</span> <span class='o'>&lt;</span> <span class='n'>array</span><span class='o'>.</span><span class='na'>length</span><span class='o'>;</span> <span class='o'>++</span><span class='n'>i</span><span class='o'>)</span> <span class='o'>{</span>
+	  <span class='n'>sb</span><span class='o'>.</span><span class='na'>append</span><span class='o'>(</span><span class='n'>Integer</span><span class='o'>.</span><span class='na'>toHexString</span><span class='o'>((</span><span class='n'>array</span><span class='o'>[</span><span class='n'>i</span><span class='o'>]</span>
+	      <span class='o'>&amp;</span> <span class='mi'>0</span><span class='n'>xFF</span><span class='o'>)</span> <span class='o'>|</span> <span class='mh'>0x100</span><span class='o'>).</span><span class='na'>substring</span><span class='o'>(</span><span class='mi'>1</span><span class='o'>,</span><span class='mi'>3</span><span class='o'>));</span>        
+      <span class='o'>}</span>
+      <span class='k'>return</span> <span class='n'>sb</span><span class='o'>.</span><span class='na'>toString</span><span class='o'>();</span>
+  <span class='o'>}</span>
+  <span class='kd'>public</span> <span class='kd'>static</span> <span class='n'>String</span> <span class='nf'>md5Hex</span> <span class='o'>(</span><span class='n'>String</span> <span class='n'>message</span><span class='o'>)</span> <span class='o'>{</span>
+      <span class='k'>try</span> <span class='o'>{</span>
+	  <span class='n'>MessageDigest</span> <span class='n'>md</span> <span class='o'>=</span> 
+	      <span class='n'>MessageDigest</span><span class='o'>.</span><span class='na'>getInstance</span><span class='o'>(</span><span class='s'>&quot;MD5&quot;</span><span class='o'>);</span>
+	  <span class='k'>return</span> <span class='nf'>hex</span> <span class='o'>(</span><span class='n'>md</span><span class='o'>.</span><span class='na'>digest</span><span class='o'>(</span><span class='n'>message</span><span class='o'>.</span><span class='na'>getBytes</span><span class='o'>(</span><span class='s'>&quot;CP1252&quot;</span><span class='o'>)));</span>
+      <span class='o'>}</span> <span class='k'>catch</span> <span class='o'>(</span><span class='n'>NoSuchAlgorithmException</span> <span class='n'>e</span><span class='o'>)</span> <span class='o'>{</span>
+      <span class='o'>}</span> <span class='k'>catch</span> <span class='o'>(</span><span class='n'>UnsupportedEncodingException</span> <span class='n'>e</span><span class='o'>)</span> <span class='o'>{</span>
+      <span class='o'>}</span>
+      <span class='k'>return</span> <span class='kc'>null</span><span class='o'>;</span>
+  <span class='o'>}</span>
+<span class='o'>}</span>
+</code></pre>
+</div>
+<ul>
+<li>使用MD5Util类获取电子邮件的hex码</li>
+</ul>
+
+<p><div class='highlight'><pre><code class='java'><span class='n'>String</span> <span class='n'>result</span> <span class='o'>=</span> <span class='n'>MD5Util</span><span class='o'>.</span><span class='na'>md5Hex</span><span class='o'>(</span><span class='s'>&quot;fankai@kaishengit.com&quot;</span><span class='o'>);</span>
+</code></pre>
+</div></p>
+
+<p>这样就获取了该电子邮件对应的hex编码，将该编码传入的到http://www.gravatar.com/avatar/链接后就可以获取该邮件对应的图片了。例如上述邮件的hex码为8266241e1c2c5460924cf1a512190d2c，那么最终的图片地址就是http://www.gravatar.com/avatar/8266241e1c2c5460924cf1a512190d2c，显示如下：<br /><img alt='我的头像' src='http://www.gravatar.com/avatar/8266241e1c2c5460924cf1a512190d2c' /></p>
+
+<p>如果该电子邮件未在Gravatar网站上进行注册，则会返回一个默认图片，如下：<br /><img alt='默认头像' src='http://www.gravatar.com/avatar/8266241e1c2c5460924cf1a51xxx' /></p>
+
+<h4 id='2jgavatar'>方法2：使用JGavatar项目</h4>
+
+<p><a href='https://github.com/ralfebert/jgravatar'>jgavatar</a>提供了一系列的API让我们更方便的使用Gravatar的服务，可以到<a href='https://github.com/ralfebert/jgravatar'>Github</a>上下载。</p>]]></content:encoded>
+    </item>
+    
+  </channel>
+</rss>

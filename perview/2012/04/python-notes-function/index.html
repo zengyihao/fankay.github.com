@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="樊凯" />
+    <title>Python学习笔记(二):函数 | 樊凯</title>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link href="/feed/" rel="alternate" title="樊凯" type="application/atom+xml" />
+    <link rel="stylesheet" href="/media/css/style.css">
+    <link rel="stylesheet" href="/media/css/highlight.css">
+    <script type="text/javascript" src="/media/js/jquery-1.7.1.min.js"></script>
+  </head>
+  <body>
+    <div id="container">
+      <div id="main" role="main">
+        <header>
+        <h1>Python学习笔记(二):函数</h1>
+        </header>
+        <nav>
+        <span><a title="home page" class="" href="/">Home</a></span>
+        <span><a title="about" class="" href="/about/">About</a></span>
+        <span><a title="guestbook" class="" href="/guestbook/">Guestbook</a></span>
+        <span><a title="categories" class="" href="/categories/">Categories</a></span>
+        <span><a title="tags" class="" href="/tags/">Tags</a></span>
+        <span><a title="links" class="" href="/links/">Links</a></span>
+        <span><a title="subscribe by RSS" class="" href="/feed/">Subscribe</a></span>
+        </nav>
+        <article class="content">
+        <section class="post">
+<p><img alt='Python' src='http://www.python.org/images/python-logo.gif' /></p>
+
+<h4 id='id36'>函数中的参数</h4>
+
+<p>定义一个函数，在函数中打印N(参数)次“This is Python”，示例如下：</p>
+<div class='highlight'><pre><code class='python'><span class='k'>def</span> <span class='nf'>print_msg</span><span class='p'>(</span><span class='n'>num</span><span class='p'>)</span> <span class='p'>:</span>
+	<span class='k'>for</span> <span class='n'>n</span> <span class='ow'>in</span> <span class='nb'>range</span><span class='p'>(</span><span class='n'>num</span><span class='p'>)</span> <span class='p'>:</span>
+		<span class='k'>print</span><span class='p'>(</span><span class='s'>&quot;This is Python&quot;</span><span class='p'>)</span>
+
+<span class='c'>#函数调用</span>
+<span class='n'>print_msg</span><span class='p'>(</span><span class='mi'>3</span><span class='p'>)</span>
+</code></pre>
+</div>
+<p>其中<em>range()</em>函数会返回一个迭代器，生成一个从0到某个数(不包含该数)的数字列表</p>
+
+<h4 id='id37'>参数中的默认值</h4>
+
+<p>上面的打印函数中，需要定义默认打印的次数的5次。在调用该函数时可以重新定义打印次数，如果未定义打印次数，则就采用默认的打印次数5，示例如下：</p>
+<div class='highlight'><pre><code class='python'><span class='k'>def</span> <span class='nf'>print_msg</span><span class='p'>(</span><span class='n'>num</span> <span class='o'>=</span> <span class='mi'>5</span><span class='p'>)</span> <span class='p'>:</span>
+	<span class='k'>for</span> <span class='n'>n</span> <span class='ow'>in</span> <span class='nb'>range</span><span class='p'>(</span><span class='n'>num</span><span class='p'>)</span> <span class='p'>:</span>
+		<span class='k'>print</span><span class='p'>(</span><span class='s'>&quot;This is Python&quot;</span><span class='p'>)</span>
+
+<span class='c'>#使用默认次数5进行打印</span>
+<span class='n'>print_msg</span><span class='p'>()</span>
+<span class='c'>#使用自定次数2进行打印</span>
+<span class='n'>print_msg</span><span class='p'>(</span><span class='mi'>2</span><span class='p'>)</span>
+</code></pre>
+</div>
+</section>
+<section class="meta">
+<span class="author">
+  <a href="http://fankai.me">樊凯</a>
+</span>
+<span class="time">
+  /
+  <time datetime="2012-04-20">2012-04-20</time>
+</span>
+<br />
+<span class="license">
+  Published under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">(CC) BY-NC-SA</a>
+</span>
+
+<span class="categories">
+  in categories
+  
+  <a href="/categories/#Python" title="Python">Python</a>&nbsp;
+  
+</span>
+
+
+<span class="tags">
+  tagged with 
+  
+</span>
+
+</section>
+<section class="comment">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'fankaysblog'; // required: replace example with your forum shortname
+    var disqus_url = 'http://fankai.me/2012/04/python-notes-function/';
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+<script type="text/javascript">
+$(function(){
+  $(document).keydown(function(e) {
+    var url = false;
+        if (e.which == 37 || e.which == 74) {  // Left arrow and J
+            
+        url = 'http://fankai.me/2012/04/python-notes-list/';
+        
+        }
+        else if (e.which == 39 || e.which == 75) {  // Right arrow and K
+            
+        url = 'http://fankai.me/2012/04/python-notes-file/';
+        
+        }
+        if (url) {
+            window.location = url;
+        }
+  });
+})
+</script>
+
+
+        </article>
+      </div>
+
+    <footer>
+        <p><small>Powered by <a href="https://github.com/mojombo/jekyll">Jekyll</a> & <a href="http://pages.github.com">GitHub</a> | Copyright 2012 - 2012 by <a href="http://fankai.me">樊凯</a> | <a href="http://www.kaishengit.com">凯盛软件</a></small></p>
+    </footer>
+
+    </div>
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-30096094-1']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+  </body>
+</html>
