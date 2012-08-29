@@ -14,7 +14,7 @@ categories: Python,Flask
 
 然后在Windows的环境变量中添加**PYTHON_HOME**环境变量
 {% highlight python %}
-PHTHON_HOME= D:/Python27
+PYTHON_HOME= D:/Python27
 {% endhighlight %}
 在Windows的**PATH**变量中添加
 {% highlight python %}
